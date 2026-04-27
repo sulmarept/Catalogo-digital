@@ -1,0 +1,499 @@
+/* ==============================================
+   SERVICOS.CSS - VERSÃO FINAL E COMPLETA 2026
+   ============================================== */
+
+:root {
+  --primary: #003087;
+  --secondary: #0066cc;
+  --light-blue: #f8fbff;
+  --white: #ffffff;
+  --text-dark: #333333;
+  --text-gray: #666666;
+  --transition: all 0.4s ease;
+}
+
+/* 1. RESET E BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* 2. CABEÇALHO (SERVICE HEADER) */
+.service-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1100;
+  background: rgba(0, 48, 135, 0.85);
+  padding: 15px 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.4s ease, background 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.service-header.hidden { transform: translateY(-100%); }
+.service-header.scrolled { background: rgba(0, 30, 80, 0.98); }
+
+.service-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.service-logo { max-height: 65px; }
+
+.service-title {
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  color: var(--white);
+  font-weight: 700;
+  margin: 0 15px;
+}
+
+.btn-home {
+  background: var(--white);
+  color: var(--primary);
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.btn-home:hover {
+  background: var(--primary);
+  color: var(--white);
+}
+
+/* 3. HERO SECTION */
+.detail-hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.detail-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0,48,135,0.3), rgba(0,20,60,0.6));
+  z-index: 1;
+}
+
+.detail-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 0 20px;
+}
+
+.detail-content h2 {
+  font-size: clamp(2.5rem, 7vw, 4.2rem);
+  font-weight: 900;
+  margin-bottom: 20px;
+  text-shadow: 0 5px 25px rgba(0,0,0,0.4);
+}
+
+.detail-content p {
+  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+  margin-bottom: 35px;
+  opacity: 0.95;
+}
+
+/* 4. SEÇÕES E LAYOUT DE GRELHA */
+.segment-section {
+  padding: 100px 20px;
+}
+
+.segment-section:nth-child(even) {
+  background: var(--light-blue);
+}
+
+.segment-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.segment-icon {
+  font-size: 3.5rem;
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+
+.segment-header h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+
+.section-intro {
+  max-width: 800px;
+  margin: 0 auto 50px;
+  font-size: 1.15rem;
+  color: var(--text-gray);
+  text-align: center;
+}
+
+/* 5. LAYOUT LADO A LADO (QUALIDADE) */
+.quality-side-by-side {
+  display: flex;
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto 60px;
+}
+
+.quality-column {
+  flex: 1;
+  min-width: 0; /* Evita quebra de flex */
+}
+
+.subtheme-title {
+  text-align: center;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  color: var(--primary);
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.subtheme-title i { color: var(--secondary); }
+
+/* 6. CARTÕES (ISLAND CARDS) */
+.islands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Variante para o layout lado a lado */
+.mini-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+  gap: 20px !important;
+}
+
+.island-card {
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+  transition: var(--transition);
+  opacity: 0; 
+  transform: translateY(30px);
+}
+
+.island-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.island-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 45px rgba(0,48,135,0.15);
+}
+
+.island-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.mini-grid .island-image { height: 160px; }
+
+.island-content {
+  padding: 25px;
+  text-align: center;
+}
+
+.island-icon {
+  font-size: 2.2rem;
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+
+.island-card h4 {
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.island-card p {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* 7. BOTÕES E CTA */
+.detail-cta {
+  text-align: center;
+  padding: 80px 20px;
+  background: var(--white);
+}
+
+.btn-explore {
+  background: var(--primary);
+  color: var(--white);
+  padding: 16px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: var(--transition);
+  box-shadow: 0 8px 20px rgba(0,48,135,0.2);
+}
+
+.btn-explore:hover {
+  background: var(--secondary);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0,48,135,0.3);
+}
+
+/* 8. ELEMENTOS FLUTUANTES */
+.btn-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 55px;
+  height: 55px;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: var(--transition);
+}
+
+.btn-top:hover { background: var(--secondary); transform: scale(1.1); }
+
+.float-buttons {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 999;
+}
+
+.float-btn {
+  width: 55px;
+  height: 55px;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+  transition: var(--transition);
+}
+
+.float-btn:hover { background: var(--secondary); transform: scale(1.1); }
+
+/* 9. MODAIS */
+.contact-modal, .social-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  padding: 20px;
+}
+
+.contact-modal.active, .social-modal.active { display: flex; }
+
+.contact-modal-content, .social-modal-content {
+  background: var(--white);
+  padding: 40px;
+  border-radius: 25px;
+  max-width: 550px;
+  width: 100%;
+  position: relative;
+  animation: modalIn 0.4s ease-out;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-gray);
+}
+
+.btn-whatsapp {
+  display: block;
+  background: #25d366;
+  color: var(--white);
+  text-align: center;
+  padding: 15px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 25px;
+  transition: 0.3s;
+}
+
+/* 10. RESPONSIVIDADE */
+@media (max-width: 1024px) {
+  .quality-side-by-side {
+    flex-direction: column;
+    gap: 50px;
+  }
+  
+  .mini-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-header-container { padding: 0 10px; }
+  .btn-home span { display: none; } /* Esconde texto home se houver */
+  
+  .segment-section { padding: 60px 15px; }
+  .detail-hero { height: 80vh; }
+  
+  .islands-grid { grid-template-columns: 1fr; }
+  
+  .subtheme-title {
+    flex-direction: column;
+    gap: 8px;
+    font-size: 1.4rem;
+  }
+}
+
+/* 11. FOOTER */
+.service-footer {
+  background: #001a4d;
+  color: var(--white);
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.footer-links {
+  margin-top: 20px;
+}
+
+.footer-links a {
+  color: var(--white);
+  text-decoration: none;
+  margin: 0 12px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.footer-links a:hover { opacity: 1; }
+
+/* Contentor principal das duas colunas */
+.quality-side-by-side {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.quality-column {
+  flex: 1;
+}
+
+/* Ajuste do Grid para alinhar os cards */
+.mini-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colunas em cada lado */
+  gap: 20px;
+}
+
+/* Garante que todos os cards tenham a mesma altura na mesma linha */
+.island-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.island-card:hover {
+  transform: translateY(-5px);
+}
+
+.island-image {
+  width: 100%;
+  height: 160px; /* Altura fixa para as imagens para manter o alinhamento */
+  object-fit: cover;
+}
+
+.island-content {
+  padding: 20px;
+  flex-grow: 1; /* Faz o conteúdo expandir para preencher o card */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.island-content h4 {
+  margin-bottom: 10px;
+  color: #003087;
+  font-size: 1.1rem;
+  min-height: 2.4em; /* Garante que títulos de 1 ou 2 linhas ocupem o mesmo espaço */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.island-content p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
