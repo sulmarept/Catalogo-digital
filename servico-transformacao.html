@@ -12,49 +12,58 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
   <style>
-    /* OTIMIZAÇÃO APENAS PARA MOBILE - PC FICA IGUAL */
+    /* Transição suave para o cabeçalho aparecer */
+    .service-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.4s ease-in-out;
+    }
+
+    /* OTIMIZAÇÃO APENAS PARA MOBILE */
     @media (max-width: 768px) {
+      /* Esconder cabeçalho inicialmente no mobile */
       .service-header {
-        padding: 5px 0 !important;
+        transform: translateY(-100%);
+        opacity: 0;
       }
+      /* Classe ativada via JavaScript ao fazer scroll */
+      .service-header.header-scrolled {
+        transform: translateY(0);
+        opacity: 1;
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+
       .service-header-container {
-        padding: 0 10px !important;
-        gap: 5px !important;
+        padding: 10px 15px !important;
       }
       .service-logo {
         height: 35px !important;
-        width: auto;
       }
       .service-title {
-        font-size: 1.1rem !important;
-      }
-      .btn-home {
-        padding: 5px 10px !important;
-        font-size: 0.75rem !important;
+        display: none; /* Ganha espaço no mobile */
       }
 
-      /* Redução drástica do Hero no telemóvel */
+      /* Hero Ocupa a Tela Completa no Mobile */
       .detail-hero {
-        min-height: 160px !important;
-        padding: 30px 15px !important;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        margin-top: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
       }
       .detail-content h2 {
-        font-size: 1.3rem !important;
-        margin-bottom: 5px !important;
+        font-size: 1.8rem !important;
       }
       .detail-content p {
-        font-size: 0.85rem !important;
-        margin-bottom: 10px !important;
-      }
-      .btn-explore {
-        padding: 8px 16px !important;
-        font-size: 0.85rem !important;
+        font-size: 1rem !important;
       }
 
-      /* Ajuste das colunas de Qualidade */
+      /* Ajustes de Grelha e Colunas */
       .quality-side-by-side {
         flex-direction: column !important;
         gap: 30px !important;
@@ -64,10 +73,6 @@
       }
       .islands-grid {
         grid-template-columns: 1fr !important;
-        gap: 15px !important;
-      }
-      .segment-header h2 {
-        font-size: 1.5rem !important;
       }
     }
   </style>
@@ -131,7 +136,7 @@
             <img src="imagens/frescos-organoleptica.jpg" alt="Organoléptica" class="island-image">
             <div class="island-content">
               <h4>Qualidade organoléptica</h4>
-              <p>Garantia de frescura, brilho e odor característicos do peixe acabado de pescar.</p>
+              <p>Garantia de frescura, brilho e odor característicos.</p>
             </div>
           </div>
         </div>
@@ -144,21 +149,21 @@
             <img src="imagens/congelados-ultra.jpg" alt="Ultra" class="island-image">
             <div class="island-content">
               <h4>Ultra congelação rápida</h4>
-              <p>Tecnologia de ponta que preserva as propriedades nutricionais e a estrutura celular do peixe.</p>
+              <p>Tecnologia que preserva as propriedades nutricionais e a estrutura celular.</p>
             </div>
           </div>
           <div class="island-card">
             <img src="imagens/congelados-seguranca.jpg" alt="Segurança" class="island-image">
             <div class="island-content">
               <h4>Segurança alimentar</h4>
-              <p>Rigorosa análise laboratorial e controlo de metais pesados e parasitas.</p>
+              <p>Rigorosa análise laboratorial e controlo de metais pesados.</p>
             </div>
           </div>
           <div class="island-card">
             <img src="imagens/congelados-conveniencia.jpg" alt="Conveniência" class="island-image">
             <div class="island-content">
               <h4>Conveniência e rentabilidade</h4>
-              <p>Cortes precisos, calibres uniformes e desperdício zero para o cliente.</p>
+              <p>Cortes precisos, calibres uniformes e desperdício zero.</p>
             </div>
           </div>
           <div class="island-card">
@@ -178,7 +183,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-award"></i></div>
           <h4>Certificação IFS Food</h4>
-          <p>Somos uma empresa certificada IFS Food V7, garantindo elevados padrões de qualidade e segurança.</p>
+          <p>Certificação IFS Food V7, garantindo segurança alimentar internacional.</p>
         </div>
       </div>
       <div class="island-card">
@@ -186,7 +191,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-recycle"></i></div>
           <h4>Reciclagem</h4>
-          <p>Promovemos a reciclagem responsável de todos os resíduos, nomeadamente plástico, cartão e poliester.</p>
+          <p>Promovemos a reciclagem de plástico, cartão e poliester.</p>
         </div>
       </div>
       <div class="island-card">
@@ -194,7 +199,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-leaf"></i></div>
           <h4>Sub-produtos</h4>
-          <p>Todos os subprodutos gerados são encaminhados para empresas especializadas para produção de ração animal.</p>
+          <p>Subprodutos reaproveitados para a produção de ração animal.</p>
         </div>
       </div>
     </div>
@@ -207,51 +212,45 @@
     </div>
     <div class="islands-grid">
       <div class="island-card">
-        <img src="imagens/frescos-selecao.jpg" alt="Seleção Frescos" class="island-image">
+        <img src="imagens/frescos-selecao.jpg" alt="Seleção" class="island-image">
         <div class="island-content">
-          <div class="island-icon"><i class="fas fa-check-circle"></i></div>
           <h4>Seleção</h4>
-          <p>Triagem rigorosa baseada na frescura, tamanho e espécie.</p>
+          <p>Triagem rigorosa baseada na frescura e espécie.</p>
         </div>
       </div>
       <div class="island-card">
-        <img src="imagens/frescos-lavagem.jpg" alt="Lavagem Frescos" class="island-image">
+        <img src="imagens/frescos-lavagem.jpg" alt="Lavagem" class="island-image">
         <div class="island-content">
-          <div class="island-icon"><i class="fas fa-water"></i></div>
           <h4>Lavagem</h4>
-          <p>Higienização com água potável controlada termicamente.</p>
+          <p>Higienização com água potável controlada.</p>
         </div>
       </div>
       <div class="island-card">
-        <img src="imagens/frescos-embalamento.jpg" alt="Embalamento Frescos" class="island-image">
+        <img src="imagens/frescos-embalamento.jpg" alt="Embalamento" class="island-image">
         <div class="island-content">
-          <div class="island-icon"><i class="fas fa-box"></i></div>
           <h4>Embalamento</h4>
-          <p>Vários formatos em caixa poliéster térmica, vácuo, cuvete e saco.</p>
+          <p>Formatos em vácuo, cuvete, saco ou caixa térmica.</p>
         </div>
       </div>
       <div class="island-card">
-        <img src="imagens/frescos-acondicionamento.jpg" alt="Acondicionamento Frescos" class="island-image">
+        <img src="imagens/frescos-acondicionamento.jpg" alt="Acondicionamento" class="island-image">
         <div class="island-content">
-          <div class="island-icon"><i class="fas fa-shield-halved"></i></div>
           <h4>Acondicionamento</h4>
-          <p>Película protetora e camada uniforme de gelo para preservação total.</p>
+          <p>Película protetora para evitar desidratação.</p>
         </div>
       </div>
       <div class="island-card">
-        <img src="imagens/frescos-rotulagem.jpg" alt="Rotulagem Frescos" class="island-image">
+        <img src="imagens/frescos-rotulagem.jpg" alt="Rotulagem" class="island-image">
         <div class="island-content">
-          <div class="island-icon"><i class="fas fa-tag"></i></div>
           <h4>Rotulagem</h4>
-          <p>Rótulos em conformidade legal e etiquetas personalizadas.</p>
+          <p>Conformidade total com os requisitos legais.</p>
         </div>
       </div>
       <div class="island-card">
-        <img src="imagens/frescos-armazenamento.jpg" alt="Armazenamento Frescos" class="island-image">
+        <img src="imagens/frescos-armazenamento.jpg" alt="Armazenamento" class="island-image">
         <div class="island-content">
-          <div class="island-icon"><i class="fas fa-warehouse"></i></div>
           <h4>Armazenamento</h4>
-          <p>Câmaras de receção e expedição preparadas para higiene e organização.</p>
+          <p>Câmaras de receção e expedição controladas.</p>
         </div>
       </div>
     </div>
@@ -266,49 +265,43 @@
       <div class="island-card">
         <img src="imagens/transformacao-congelados-selecao.jpg" alt="Seleção" class="island-image">
         <div class="island-content">
-          <div class="island-icon"><i class="fas fa-tasks"></i></div>
           <h4>Seleção</h4>
-          <p>Calibração por tamanho e categoria, com manutenção da cadeia de frio.</p>
+          <p>Calibração rigorosa mantendo a cadeia de frio.</p>
         </div>
       </div>
       <div class="island-card">
         <img src="imagens/transformacao-congelados-corte.jpg" alt="Corte" class="island-image">
         <div class="island-content">
-          <div class="island-icon"><i class="fas fa-cut"></i></div>
           <h4>Corte Especializado</h4>
-          <p>Linha de corte com serra de alta precisão para diferentes formatos.</p>
+          <p>Corte preciso para diferentes necessidades.</p>
         </div>
       </div>
       <div class="island-card">
         <img src="imagens/transformacao-congelados-vidragem.jpg" alt="Vidragem" class="island-image">
         <div class="island-content">
-          <div class="island-icon"><i class="fas fa-tint"></i></div>
           <h4>Vidragem</h4>
-          <p>Camada protetora de água que preserva a qualidade e transparência.</p>
+          <p>Camada protetora de água que mantém a qualidade.</p>
         </div>
       </div>
       <div class="island-card">
         <img src="imagens/transformacao-congelados-congelacao.jpg" alt="Congelação" class="island-image">
         <div class="island-content">
-          <div class="island-icon"><i class="fas fa-icicles"></i></div>
           <h4>Congelação</h4>
-          <p>Túneis de ultra-congelação rápida (IQF ou bloco) para preservar texturas.</p>
+          <p>Túneis de ultra-congelação rápida.</p>
         </div>
       </div>
       <div class="island-card">
         <img src="imagens/transformacao-congelados-embalamento.jpg" alt="Embalamento" class="island-image">
         <div class="island-content">
-          <div class="island-icon"><i class="fas fa-box-open"></i></div>
           <h4>Embalamento</h4>
-          <p>Saco, granel, cuvete ou vácuo conforme a necessidade do cliente.</p>
+          <p>Formatos adaptados ao cliente final.</p>
         </div>
       </div>
       <div class="island-card">
         <img src="imagens/transformacao-congelados-armazenamento.jpg" alt="Armazenamento" class="island-image">
         <div class="island-content">
-          <div class="island-icon"><i class="fas fa-warehouse"></i></div>
           <h4>Armazenamento</h4>
-          <p>Câmaras automatizadas com temperatura monitorizada continuamente.</p>
+          <p>Monitorização contínua da temperatura.</p>
         </div>
       </div>
     </div>
@@ -321,10 +314,6 @@
 </main>
 
 <button class="btn-top" id="btn-top"><i class="fas fa-arrow-up"></i></button>
-
-<div class="float-buttons">
-  <button class="float-btn contact-btn" onclick="openModal('contact-modal')"><i class="fas fa-phone"></i></button>
-</div>
 
 <div class="contact-modal" id="contact-modal">
   <div class="contact-modal-content">
@@ -342,15 +331,23 @@
 </footer>
 
 <script>
-  function openModal(id) {
-    document.getElementById(id).classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal(id) {
-    document.getElementById(id).classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
-  function revealOnScroll() {
+  const header = document.getElementById('service-header');
+  const btnTop = document.getElementById('btn-top');
+
+  function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = 'auto'; }
+
+  window.addEventListener('scroll', () => {
+    // Efeito do cabeçalho aparecer após scroll de 100px
+    if (window.scrollY > 100) {
+      header.classList.add('header-scrolled');
+      btnTop.style.display = 'flex';
+    } else {
+      header.classList.remove('header-scrolled');
+      btnTop.style.display = 'none';
+    }
+    
+    // Animação de revelação dos cards
     const elements = document.querySelectorAll('.segment-section, .island-card');
     elements.forEach(el => {
       const rect = el.getBoundingClientRect();
@@ -358,17 +355,9 @@
         el.classList.add('visible');
       }
     });
-  }
-  const btnTop = document.getElementById('btn-top');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) btnTop.style.display = 'flex';
-    else btnTop.style.display = 'none';
-    revealOnScroll();
   });
-  btnTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-  window.addEventListener('load', revealOnScroll);
+
+  btnTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 </script>
 
 </body>
