@@ -12,8 +12,49 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
   <style>
-    /* OTIMIZAÇÃO APENAS PARA MOBILE */
+    /* OTIMIZAÇÃO APENAS PARA MOBILE - PC FICA IGUAL */
     @media (max-width: 768px) {
+      .service-header {
+        padding: 5px 0 !important;
+      }
+      .service-header-container {
+        padding: 0 10px !important;
+        gap: 5px !important;
+      }
+      .service-logo {
+        height: 35px !important;
+        width: auto;
+      }
+      .service-title {
+        font-size: 1.1rem !important;
+      }
+      .btn-home {
+        padding: 5px 10px !important;
+        font-size: 0.75rem !important;
+      }
+
+      /* Redução drástica do Hero no telemóvel */
+      .detail-hero {
+        min-height: 160px !important;
+        padding: 30px 15px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .detail-content h2 {
+        font-size: 1.3rem !important;
+        margin-bottom: 5px !important;
+      }
+      .detail-content p {
+        font-size: 0.85rem !important;
+        margin-bottom: 10px !important;
+      }
+      .btn-explore {
+        padding: 8px 16px !important;
+        font-size: 0.85rem !important;
+      }
+
+      /* Ajuste das colunas de Qualidade */
       .quality-side-by-side {
         flex-direction: column !important;
         gap: 30px !important;
@@ -23,14 +64,10 @@
       }
       .islands-grid {
         grid-template-columns: 1fr !important;
+        gap: 15px !important;
       }
-      .service-header-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-      }
-      .detail-hero h2 {
-        font-size: 1.8rem;
+      .segment-header h2 {
+        font-size: 1.5rem !important;
       }
     }
   </style>
@@ -42,7 +79,7 @@
     <img src="imagens/logo-sulmare.svg" alt="Logotipo Sulmaré" class="service-logo">
     <h1 class="service-title">Transformação</h1>
     <a href="index.html" class="btn-home">
-      <i class="fas fa-home"></i> Página Principal
+      <i class="fas fa-home"></i> Início
     </a>
   </div>
 </header>
@@ -62,11 +99,10 @@
     <div class="segment-header">
       <div class="segment-icon"><i class="fas fa-certificate"></i></div>
       <h2>1. Qualidade</h2>
-      <p class="section-intro">Controlamos todos os parâmetros críticos para garantir que cada product cumpre os mais altos padrões de segurança e excelência.</p>
+      <p class="section-intro">Controlamos todos os parâmetros críticos para garantir que cada produto cumpre os mais altos padrões de segurança e excelência.</p>
     </div>
 
     <div class="quality-side-by-side" style="display: flex; gap: 60px;">
-      
       <div class="quality-column">
         <h3 class="subtheme-title"><i class="fas fa-fish"></i> Qualidade dos Frescos</h3>
         <div class="islands-grid mini-grid">
@@ -129,7 +165,7 @@
             <img src="imagens/congelados-disponibilidade.jpg" alt="Disponibilidade" class="island-image">
             <div class="island-content">
               <h4>Disponibilidade permanente</h4>
-              <p>Garantia de stock das melhores espécies durante todo o ano, independentemente da sazonalidade.</p>
+              <p>Garantia de stock das melhores espécies durante todo o ano.</p>
             </div>
           </div>
         </div>
@@ -142,25 +178,23 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-award"></i></div>
           <h4>Certificação IFS Food</h4>
-          <p>Somos uma empresa certificada IFS Food V7, garantindo elevados padrões de qualidade, segurança alimentar e conformidade com as exigências internacionais.</p>
+          <p>Somos uma empresa certificada IFS Food V7, garantindo elevados padrões de qualidade e segurança.</p>
         </div>
       </div>
-
       <div class="island-card">
         <img src="imagens/qualidade-reciclagem.jpg" alt="Reciclagem" class="island-image">
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-recycle"></i></div>
           <h4>Reciclagem</h4>
-          <p>Promovemos a reciclagem responsável de todos os resíduos, nomeadamente plástico, cartão e poliester, assegurando a sua correta separação e encaminhamento.</p>
+          <p>Promovemos a reciclagem responsável de todos os resíduos, nomeadamente plástico, cartão e poliester.</p>
         </div>
       </div>
-
       <div class="island-card">
         <img src="imagens/qualidade-subprodutos.jpg" alt="Sub-produtos" class="island-image">
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-leaf"></i></div>
           <h4>Sub-produtos</h4>
-          <p>Todos os subprodutos gerados são encaminhados para empresas especializadas, sendo reaproveitados na produção de ração animal.</p>
+          <p>Todos os subprodutos gerados são encaminhados para empresas especializadas para produção de ração animal.</p>
         </div>
       </div>
     </div>
@@ -193,7 +227,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-box"></i></div>
           <h4>Embalamento</h4>
-          <p>Vários formatos de embalamento em caixa poliéster térmica, vácuo, cuvete e saco.</p>
+          <p>Vários formatos em caixa poliéster térmica, vácuo, cuvete e saco.</p>
         </div>
       </div>
       <div class="island-card">
@@ -201,7 +235,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-shield-halved"></i></div>
           <h4>Acondicionamento</h4>
-          <p>Utilização de película protetora para evitar contaminações externas e desidratação.</p>
+          <p>Película protetora e camada uniforme de gelo para preservação total.</p>
         </div>
       </div>
       <div class="island-card">
@@ -209,7 +243,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-tag"></i></div>
           <h4>Rotulagem</h4>
-          <p>Desenvolvemos rótulos em conformidade com todos os requisitos legais.</p>
+          <p>Rótulos em conformidade legal e etiquetas personalizadas.</p>
         </div>
       </div>
       <div class="island-card">
@@ -217,7 +251,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-warehouse"></i></div>
           <h4>Armazenamento</h4>
-          <p>Dispomos de câmaras de receção e expedição totalmente preparadas.</p>
+          <p>Câmaras de receção e expedição preparadas para higiene e organização.</p>
         </div>
       </div>
     </div>
@@ -234,7 +268,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-tasks"></i></div>
           <h4>Seleção</h4>
-          <p>Calibração por tamanho e categoria, garantindo uniformidade e padronização.</p>
+          <p>Calibração por tamanho e categoria, com manutenção da cadeia de frio.</p>
         </div>
       </div>
       <div class="island-card">
@@ -242,7 +276,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-cut"></i></div>
           <h4>Corte Especializado</h4>
-          <p>Linha de corte com serra, preparada para diferentes tipos de corte com precisão.</p>
+          <p>Linha de corte com serra de alta precisão para diferentes formatos.</p>
         </div>
       </div>
       <div class="island-card">
@@ -250,7 +284,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-tint"></i></div>
           <h4>Vidragem</h4>
-          <p>Aplicação de uma camada de água protetora que preserva a qualidade do produto.</p>
+          <p>Camada protetora de água que preserva a qualidade e transparência.</p>
         </div>
       </div>
       <div class="island-card">
@@ -258,7 +292,23 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-icicles"></i></div>
           <h4>Congelação</h4>
-          <p>Túneis de ultra-congelação rápida preservando textura e valor nutricional.</p>
+          <p>Túneis de ultra-congelação rápida (IQF ou bloco) para preservar texturas.</p>
+        </div>
+      </div>
+      <div class="island-card">
+        <img src="imagens/transformacao-congelados-embalamento.jpg" alt="Embalamento" class="island-image">
+        <div class="island-content">
+          <div class="island-icon"><i class="fas fa-box-open"></i></div>
+          <h4>Embalamento</h4>
+          <p>Saco, granel, cuvete ou vácuo conforme a necessidade do cliente.</p>
+        </div>
+      </div>
+      <div class="island-card">
+        <img src="imagens/transformacao-congelados-armazenamento.jpg" alt="Armazenamento" class="island-image">
+        <div class="island-content">
+          <div class="island-icon"><i class="fas fa-warehouse"></i></div>
+          <h4>Armazenamento</h4>
+          <p>Câmaras automatizadas com temperatura monitorizada continuamente.</p>
         </div>
       </div>
     </div>
@@ -292,13 +342,21 @@
 </footer>
 
 <script>
-  function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
-  function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = 'auto'; }
+  function openModal(id) {
+    document.getElementById(id).classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
   function revealOnScroll() {
     const elements = document.querySelectorAll('.segment-section, .island-card');
     elements.forEach(el => {
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 50) { el.classList.add('visible'); }
+      if (rect.top < window.innerHeight - 50) {
+        el.classList.add('visible');
+      }
     });
   }
   const btnTop = document.getElementById('btn-top');
@@ -307,7 +365,9 @@
     else btnTop.style.display = 'none';
     revealOnScroll();
   });
-  btnTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  btnTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
   window.addEventListener('load', revealOnScroll);
 </script>
 
