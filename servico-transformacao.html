@@ -10,6 +10,30 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    /* OTIMIZAÇÃO APENAS PARA MOBILE */
+    @media (max-width: 768px) {
+      .quality-side-by-side {
+        flex-direction: column !important;
+        gap: 30px !important;
+      }
+      .quality-column {
+        width: 100% !important;
+      }
+      .islands-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .service-header-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+      .detail-hero h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -38,7 +62,7 @@
     <div class="segment-header">
       <div class="segment-icon"><i class="fas fa-certificate"></i></div>
       <h2>1. Qualidade</h2>
-      <p class="section-intro">Controlamos todos os parâmetros críticos para garantir que cada produto cumpre os mais altos padrões de segurança e excelência.</p>
+      <p class="section-intro">Controlamos todos os parâmetros críticos para garantir que cada product cumpre os mais altos padrões de segurança e excelência.</p>
     </div>
 
     <div class="quality-side-by-side" style="display: flex; gap: 60px;">
@@ -118,7 +142,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-award"></i></div>
           <h4>Certificação IFS Food</h4>
-          <p>Somos uma empresa certificada IFS Food V7, garantindo elevados padrões de qualidade, segurança alimentar e conformidade com as exigências internacionais, refletindo o nosso compromisso com a excelência em todos os processos.</p>
+          <p>Somos uma empresa certificada IFS Food V7, garantindo elevados padrões de qualidade, segurança alimentar e conformidade com as exigências internacionais.</p>
         </div>
       </div>
 
@@ -127,7 +151,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-recycle"></i></div>
           <h4>Reciclagem</h4>
-          <p>Promovemos a reciclagem responsável de todos os resíduos, nomeadamente plástico, cartão e poliester, assegurando a sua correta separação e encaminhamento, contribuímos ativamente para a redução do impacto ambiental, adotando práticas sustentáveis em todas as etapas do processo.</p>
+          <p>Promovemos a reciclagem responsável de todos os resíduos, nomeadamente plástico, cartão e poliester, assegurando a sua correta separação e encaminhamento.</p>
         </div>
       </div>
 
@@ -136,7 +160,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-leaf"></i></div>
           <h4>Sub-produtos</h4>
-          <p>Todos os subprodutos gerados são encaminhados para empresas especializadas, sendo reaproveitados na produção de ração animal, este processo permite reduzir o desperdício e minimizar o impacto ambiental, promovendo uma gestão mais sustentável de todos os recursos.</p>
+          <p>Todos os subprodutos gerados são encaminhados para empresas especializadas, sendo reaproveitados na produção de ração animal.</p>
         </div>
       </div>
     </div>
@@ -177,7 +201,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-shield-halved"></i></div>
           <h4>Acondicionamento</h4>
-          <p>Utilização de película protetora para evitar contaminações externas e desidratação, camada uniforme de gelo de forma a garantir a preservação da qualidade e segurança alimentar.</p>
+          <p>Utilização de película protetora para evitar contaminações externas e desidratação.</p>
         </div>
       </div>
       <div class="island-card">
@@ -185,7 +209,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-tag"></i></div>
           <h4>Rotulagem</h4>
-          <p>Desenvolvemos rótulos em conformidade com todos os requisitos legais (zona de captura, arte, lote) e etiquetas personalizadas adaptadas a cada cliente.</p>
+          <p>Desenvolvemos rótulos em conformidade com todos os requisitos legais.</p>
         </div>
       </div>
       <div class="island-card">
@@ -193,7 +217,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-warehouse"></i></div>
           <h4>Armazenamento</h4>
-          <p>Dispomos de câmaras de receção e expedição totalmente preparadas, garantindo condições controladas de temperatura, higiene e organização para preservar a segurança em todas as etapas.</p>
+          <p>Dispomos de câmaras de receção e expedição totalmente preparadas.</p>
         </div>
       </div>
     </div>
@@ -210,7 +234,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-tasks"></i></div>
           <h4>Seleção</h4>
-          <p>A seleção do peixe congelado é efetuada através de processos de calibração por tamanho e categoria, garantindo uniformidade e padronização do produto, são assegurados cuidados rigorosos na manutenção da cadeia de frio, preservando assim a qualidade e segurança alimentar.</p>
+          <p>Calibração por tamanho e categoria, garantindo uniformidade e padronização.</p>
         </div>
       </div>
       <div class="island-card">
@@ -218,7 +242,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-cut"></i></div>
           <h4>Corte Especializado</h4>
-          <p>Linha de corte com serra, preparada para realizar diferentes tipos de corte com precisão e eficiência, adaptamos cada processo às especificações do cliente, garantindo padronização, qualidade e aproveitamento otimizado do produto.</p>
+          <p>Linha de corte com serra, preparada para diferentes tipos de corte com precisão.</p>
         </div>
       </div>
       <div class="island-card">
@@ -226,7 +250,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-tint"></i></div>
           <h4>Vidragem</h4>
-          <p>A vidragem é realizada com máximo rigor, através da aplicação de uma camada de água protetora que preserva a qualidade do produto, efetuamos testes regulares de vidragem para garantir consistência e conformidade, trabalhamos à medida das especificações do cliente, assegurando um equilíbrio entre proteção do produto e transparência comercial.</p>
+          <p>Aplicação de uma camada de água protetora que preserva a qualidade do produto.</p>
         </div>
       </div>
       <div class="island-card">
@@ -234,31 +258,7 @@
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-icicles"></i></div>
           <h4>Congelação</h4>
-          <p>Na nossa fábrica dispomos de túneis de ultra-congelação rápida, permitindo congelar o peixe de forma individual e eficiente, preservando a sua textura, qualidade e valor nutricional, utilizamos diferentes métodos de congelação, (IQF – Individual Quick Freezing) e congelação em bloco, adaptando o processo às características do produto e às necessidades do cliente, garantimos assim um produto final com elevados padrões de qualidade e segurança alimentar.</p>
-        </div>
-      </div>
-      <div class="island-card">
-        <img src="imagens/transformacao-congelados-embalamento.jpg" alt="Embalamento" class="island-image">
-        <div class="island-content">
-          <div class="island-icon"><i class="fas fa-box-open"></i></div>
-          <h4>Embalamento</h4>
-          <p>Disponibilizamos diversas soluções de embalamento adaptadas às necessidades do cliente, embalamento a granel, em saco, higienizado, cuvete e a vácuo, cada formato é selecionado de acordo com o tipo de produto e destino final, garantindo proteção e conservação.</p>
-        </div>
-      </div>
-      <div class="island-card">
-        <img src="imagens/transformacao-congelados-rotulagem.jpg" alt="Rotulagem" class="island-image">
-        <div class="island-content">
-          <div class="island-icon"><i class="fas fa-file-invoice"></i></div>
-          <h4>Rotulagem</h4>
-          <p>Desenvolvemos rótulos em conformidade com todos os requisitos legais, como zona de captura, arte de pesca, nome científico, lote, entre outros elementos obrigatórios, fazemos etiquetas personalizadas, adaptadas às especificações e necessidades de cada cliente.</p>
-        </div>
-      </div>
-      <div class="island-card">
-        <img src="imagens/transformacao-congelados-armazenamento.jpg" alt="Armazenamento" class="island-image">
-        <div class="island-content">
-          <div class="island-icon"><i class="fas fa-warehouse"></i></div>
-          <h4>Armazenamento</h4>
-          <p>Dispomos de câmaras frigoríficas específicas para o armazenamento de peixe congelado, garantindo a manutenção da cadeia de frio e a integridade do produto. As nossas câmaras são automatizadas, com temperatura rigorosamente controlada, monitorizadas de forma contínua e equipadas com sistemas de segurança, assegurando condições ideais de conservação e qualidade.</p>
+          <p>Túneis de ultra-congelação rápida preservando textura e valor nutricional.</p>
         </div>
       </div>
     </div>
@@ -280,7 +280,7 @@
   <div class="contact-modal-content">
     <button class="close-modal" onclick="closeModal('contact-modal')">×</button>
     <h3>Solicitar Orçamento</h3>
-    <a href="https://wa.me/351918031569 class="btn-whatsapp" target="_blank">
+    <a href="https://wa.me/351918031569" class="btn-whatsapp" target="_blank">
       <i class="fab fa-whatsapp"></i> Contactar via WhatsApp
     </a>
     <p style="margin-top: 20px; font-size: 0.9rem; color: #666;">Quinta da Arrocásia, Lote 3 - Alenquer</p>
@@ -292,21 +292,13 @@
 </footer>
 
 <script>
-  function openModal(id) {
-    document.getElementById(id).classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal(id) {
-    document.getElementById(id).classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
+  function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = 'auto'; }
   function revealOnScroll() {
     const elements = document.querySelectorAll('.segment-section, .island-card');
     elements.forEach(el => {
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 50) {
-        el.classList.add('visible');
-      }
+      if (rect.top < window.innerHeight - 50) { el.classList.add('visible'); }
     });
   }
   const btnTop = document.getElementById('btn-top');
@@ -315,9 +307,7 @@
     else btnTop.style.display = 'none';
     revealOnScroll();
   });
-  btnTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  btnTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
   window.addEventListener('load', revealOnScroll);
 </script>
 
