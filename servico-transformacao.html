@@ -13,25 +13,36 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
   <style>
-    /* 1. CONFIGURAÇÃO DO CABEÇALHO (VISUAL ORIGINAL AZUL) */
+    /* 1. CONFIGURAÇÃO GERAL DO CABEÇALHO (AZUL) */
     .service-header {
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
-      background: #003087 !important; /* Azul da Marca */
+      background: #003087 !important; 
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: 0 2px 15px rgba(0,0,0,0.2);
     }
 
-    .service-title {
-      color: #ffffff !important;
+    .service-header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 5%;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    /* 2. CORREÇÃO DO BOTÃO INÍCIO (Texto Azul sobre Branco) */
+    .service-title {
+      color: #ffffff !important;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    /* BOTÃO HOME (Fundo Branco, Texto Azul) */
     .btn-home {
       background-color: #ffffff !important;
-      color: #003087 !important; /* Azul para visibilidade no fundo branco */
+      color: #003087 !important;
       padding: 8px 18px !important;
       border-radius: 50px !important;
       text-decoration: none !important;
@@ -46,26 +57,30 @@
       color: #003087 !important;
     }
 
-    /* 3. OTIMIZAÇÃO MOBILE (COMPORTAMENTO IGUAL AO INDEX) */
+    /* 2. OTIMIZAÇÃO PARA TELEMÓVEL (MOBILE) */
     @media (max-width: 768px) {
+      /* Comportamento do Index: Escondido e aparece no scroll */
       .service-header {
         transform: translateY(-100%);
         opacity: 0;
-        padding: 10px 0 !important;
+        padding: 12px 0 !important;
       }
 
-      /* Classe ativada via JS no Scroll */
       .service-header.header-scrolled {
         transform: translateY(0);
         opacity: 1;
       }
 
+      /* ALTERAÇÃO PEDIDA: Esconder Logo e colocar Título no lugar */
       .service-logo {
-        height: 30px !important;
+        display: none !important;
       }
 
       .service-title {
-        display: none; /* Escondido no mobile para dar espaço ao botão e logo */
+        display: block !important;
+        font-size: 1.1rem !important;
+        flex-grow: 1;
+        text-align: left;
       }
 
       /* Hero Ocupa a Tela Inteira */
@@ -79,17 +94,21 @@
         text-align: center !important;
       }
 
-      /* Ajustes de Grelha para colunas únicas */
-      .quality-side-by-side {
-        flex-direction: column !important;
-        gap: 40px !important;
-      }
-      .quality-column {
-        width: 100% !important;
-      }
-      .islands-grid {
-        grid-template-columns: 1fr !important;
-      }
+      /* Ajustes de Grelha */
+      .quality-side-by-side { flex-direction: column !important; }
+      .quality-column { width: 100% !important; }
+      .islands-grid { grid-template-columns: 1fr !important; }
+    }
+
+    /* Animação para os elementos aparecerem ao fazer scroll */
+    .segment-section, .island-card {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    .segment-section.visible, .island-card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -98,7 +117,9 @@
 <header class="service-header" id="service-header">
   <div class="service-header-container">
     <img src="imagens/logo-sulmare.svg" alt="Logotipo Sulmaré" class="service-logo">
+    
     <h1 class="service-title">Transformação</h1>
+    
     <a href="index.html" class="btn-home">
       <i class="fas fa-home"></i> Início
     </a>
@@ -168,21 +189,6 @@
         </div>
       </div>
     </div>
-
-    <div class="islands-grid" style="margin-top: 50px;">
-      <div class="island-card">
-        <img src="imagens/qualidade-ifs-food.jpg" class="island-image">
-        <div class="island-content"><h4>Certificação IFS Food</h4><p>Padrões internacionais de segurança alimentar V7.</p></div>
-      </div>
-      <div class="island-card">
-        <img src="imagens/qualidade-reciclagem.jpg" class="island-image">
-        <div class="island-content"><h4>Reciclagem</h4><p>Gestão responsável de plástico, cartão e poliester.</p></div>
-      </div>
-      <div class="island-card">
-        <img src="imagens/qualidade-subprodutos.jpg" class="island-image">
-        <div class="island-content"><h4>Sub-produtos</h4><p>Encaminhamento para produção de ração animal.</p></div>
-      </div>
-    </div>
   </section>
 
   <section class="segment-section">
@@ -193,9 +199,9 @@
     <div class="islands-grid">
       <div class="island-card"><img src="imagens/frescos-selecao.jpg" class="island-image"><div class="island-content"><h4>Seleção</h4><p>Triagem baseada na frescura e espécie.</p></div></div>
       <div class="island-card"><img src="imagens/frescos-lavagem.jpg" class="island-image"><div class="island-content"><h4>Lavagem</h4><p>Higienização com água potável controlada.</p></div></div>
-      <div class="island-card"><img src="imagens/frescos-embalamento.jpg" class="island-image"><div class="island-content"><h4>Embalamento</h4><p>Formatos: vácuo, cuvete, saco ou caixa térmica.</p></div></div>
-      <div class="island-card"><img src="imagens/frescos-acondicionamento.jpg" class="island-image"><div class="island-content"><h4>Acondicionamento</h4><p>Película protetora para evitar desidratação.</p></div></div>
-      <div class="island-card"><img src="imagens/frescos-rotulagem.jpg" class="island-image"><div class="island-content"><h4>Rotulagem</h4><p>Rastreabilidade total e requisitos legais.</p></div></div>
+      <div class="island-card"><img src="imagens/frescos-embalamento.jpg" class="island-image"><div class="island-content"><h4>Embalamento</h4><p>Vácuo, cuvete ou caixa térmica.</p></div></div>
+      <div class="island-card"><img src="imagens/frescos-acondicionamento.jpg" class="island-image"><div class="island-content"><h4>Acondicionamento</h4><p>Película protetora contra desidratação.</p></div></div>
+      <div class="island-card"><img src="imagens/frescos-rotulagem.jpg" class="island-image"><div class="island-content"><h4>Rotulagem</h4><p>Rastreabilidade total e conformidade legal.</p></div></div>
       <div class="island-card"><img src="imagens/frescos-armazenamento.jpg" class="island-image"><div class="island-content"><h4>Armazenamento</h4><p>Câmaras de frio otimizadas para expedição.</p></div></div>
     </div>
   </section>
@@ -207,7 +213,7 @@
     </div>
     <div class="islands-grid">
       <div class="island-card"><img src="imagens/transformacao-congelados-selecao.jpg" class="island-image"><div class="island-content"><h4>Seleção</h4><p>Calibração mantendo a cadeia de frio.</p></div></div>
-      <div class="island-card"><img src="imagens/transformacao-congelados-corte.jpg" class="island-image"><div class="island-content"><h4>Corte Especializado</h4><p>Linhas preparadas para cortes de precisão.</p></div></div>
+      <div class="island-card"><img src="imagens/transformacao-congelados-corte.jpg" class="island-image"><div class="island-content"><h4>Corte</h4><p>Linhas preparadas para cortes de precisão.</p></div></div>
       <div class="island-card"><img src="imagens/transformacao-congelados-vidragem.jpg" class="island-image"><div class="island-content"><h4>Vidragem</h4><p>Proteção que preserva a qualidade do produto.</p></div></div>
       <div class="island-card"><img src="imagens/transformacao-congelados-congelacao.jpg" class="island-image"><div class="island-content"><h4>Congelação</h4><p>Túneis de ultra-congelação rápida.</p></div></div>
       <div class="island-card"><img src="imagens/transformacao-congelados-embalamento.jpg" class="island-image"><div class="island-content"><h4>Embalamento</h4><p>Formatos adaptados ao cliente final.</p></div></div>
@@ -246,7 +252,7 @@
   function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = 'auto'; }
 
   window.addEventListener('scroll', () => {
-    // Cabeçalho aparece após 150px de scroll
+    // Comportamento do Cabeçalho: Aparece após 150px de scroll
     if (window.scrollY > 150) {
       header.classList.add('header-scrolled');
       btnTop.style.display = 'flex';
@@ -255,7 +261,7 @@
       btnTop.style.display = 'none';
     }
     
-    // Animação de entrada dos cartões
+    // Revelar elementos no scroll
     const elements = document.querySelectorAll('.segment-section, .island-card');
     elements.forEach(el => {
       const rect = el.getBoundingClientRect();
