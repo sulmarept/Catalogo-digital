@@ -26,18 +26,25 @@
         .service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease }
         .service-card:hover .service-image img { transform: scale(1.08) }
 
-        /* AJUSTE DO LOGO NO HERO PARA TELEMÓVEL */
+        /* AJUSTE DO LOGO NO HERO PARA TELEMÓVEL - VERSÃO AMPLIADA */
         @media (max-width: 768px) {
             .hero-logo {
-                width: 280px !important; /* Aumentado conforme pedido */
-                max-width: 85% !important;
+                width: 320px !important; /* Aumentado de 280px para 320px */
+                max-width: 95% !important;
                 height: auto !important;
-                margin-bottom: 25px !important;
+                margin-bottom: 30px !important;
+                display: block !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
             }
             
             .catalog-title {
-                font-size: 1.4rem !important;
-                margin-bottom: 15px !important;
+                font-size: 1.3rem !important; /* Ligeiramente menor para dar foco ao logo */
+                letter-spacing: 1px !important;
+            }
+
+            .hero-content {
+                padding-top: 20px !important;
             }
         }
     </style>
@@ -149,58 +156,58 @@
         const header = document.getElementById("main-header");
         window.addEventListener("scroll", () => {
             300 < window.scrollY ? header.classList.add("show") : header.classList.remove("show")
-        }), document.querySelectorAll(".nav-link").forEach(e => {
+        });
+
+        document.querySelectorAll(".nav-link").forEach(e => {
             e.addEventListener("click", function(e) {
                 if (this.getAttribute("href").startsWith("#")) {
                     e.preventDefault();
-                    e = this.getAttribute("href").substring(1);
-                    const t = document.getElementById(e);
-                    t && (e = header.offsetHeight || 70, e = t.getBoundingClientRect().top + window.scrollY - e - 30, window.scrollTo({
-                        top: e,
-                        behavior: "smooth"
-                    }))
+                    const targetId = this.getAttribute("href").substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        const offset = header.offsetHeight || 70;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset - 30;
+                        window.scrollTo({ top: targetPosition, behavior: "smooth" });
+                    }
                 }
-            })
-        }), document.getElementById("btn-inicio").addEventListener("click", function(e) {
-            e.preventDefault(), window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            })
+            });
         });
+
+        document.getElementById("btn-inicio").addEventListener("click", function(e) {
+            e.preventDefault(), window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
         const btnExplorar = document.getElementById("btn-explorar");
 
         function revealOnScroll() {
             document.querySelectorAll(".service-card").forEach(e => {
-                e.getBoundingClientRect().top < window.innerHeight - 100 && e.classList.add("visible")
-            })
+                if (e.getBoundingClientRect().top < window.innerHeight - 100) {
+                    e.classList.add("visible");
+                }
+            });
         }
 
-        function openContactModal() {
-            document.getElementById("contact-modal").classList.add("active")
-        }
+        function openContactModal() { document.getElementById("contact-modal").classList.add("active"); }
+        function closeModal(id) { document.getElementById(id).classList.remove("active"); }
+        function openSocialModal() { document.getElementById("social-modal").classList.add("active"); }
+        function closeSocialModal() { document.getElementById("social-modal").classList.remove("active"); }
 
-        function closeContactModal() {
-            document.getElementById("contact-modal").classList.remove("active")
-        }
-
-        function openSocialModal() {
-            document.getElementById("social-modal").classList.add("active")
-        }
-
-        function closeSocialModal() {
-            document.getElementById("social-modal").classList.remove("active")
-        }
         btnExplorar.addEventListener("click", function(e) {
-            e.preventDefault(), this.style.transform = "scale(0.92)", setTimeout(() => {
-                this.style.transform = "scale(1)"
-            }, 180);
-            const t = document.getElementById("servicos");
-            t && (e = t.getBoundingClientRect().top + window.scrollY - (header.offsetHeight + 40), window.scrollTo({
-                top: e,
-                behavior: "smooth"
-            }))
-        }), window.addEventListener("scroll", revealOnScroll), window.addEventListener("load", revealOnScroll), window.onclick = function(e) {
-            e.target.classList.contains("contact-modal") && closeContactModal(), e.target.classList.contains("social-modal") && closeSocialModal()
+            e.preventDefault();
+            this.style.transform = "scale(0.92)";
+            setTimeout(() => { this.style.transform = "scale(1)"; }, 180);
+            const target = document.getElementById("servicos");
+            if (target) {
+                const targetPos = target.getBoundingClientRect().top + window.scrollY - (header.offsetHeight + 40);
+                window.scrollTo({ top: targetPos, behavior: "smooth" });
+            }
+        });
+
+        window.addEventListener("scroll", revealOnScroll);
+        window.addEventListener("load", revealOnScroll);
+        window.onclick = function(e) {
+            if (e.target.classList.contains("contact-modal")) closeModal("contact-modal");
+            if (e.target.classList.contains("social-modal")) closeSocialModal();
         }
     </script>
 </body>
