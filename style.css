@@ -529,3 +529,58 @@ p { font-size: clamp(1rem, 3.5vw, 1.1rem); }
   .location-container { flex-direction: column; }
   .map-wrapper { max-width: 100%; }
 }
+
+/* --- PAINEL FLUTUANTE DE BANDEIRAS --- */
+.floating-lang-panel {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column; /* Bandeiras em coluna para ocupar menos largura */
+    gap: 12px;
+    z-index: 9999; /* Garante que fica por cima de tudo */
+    border: 2px solid #003087;
+    backdrop-filter: blur(5px);
+}
+
+.lang-option {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.lang-option img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.lang-option:hover {
+    transform: scale(1.25);
+}
+
+/* Ajuste para Telemóvel */
+@media (max-width: 768px) {
+    .floating-lang-panel {
+        bottom: 15px;
+        left: 15px;
+        padding: 8px;
+        gap: 10px;
+    }
+    .lang-option {
+        width: 28px;
+    }
+}
+
+/* Esconder a barra de topo do Google Translate */
+.goog-te-banner-frame.skiptranslate { display: none !important; }
+body { top: 0px !important; }
