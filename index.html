@@ -59,17 +59,22 @@
 
 <body>
    <header class="main-header" id="main-header">
-    <div class="header-container">
-        <img src="imagens/logo-sulmare.svg" alt="Sulmaré" class="header-logo">
-        <nav>
-            <a href="#" class="nav-link" id="btn-inicio">Início</a>
-            <a href="#localizacao" class="nav-link">Localização</a>
-            <a href="#servicos" class="nav-link">Serviços</a>
-            <a href="#" onclick="openContactModal()" class="nav-link">Contactos</a>
-            
-            <div id="google_translate_element" class="lang-selector"></div>
-        </nav>
+   <div class="floating-lang-panel">
+    <div class="lang-option" onclick="translatePage('pt')">
+        <img src="https://flagcdn.com/w40/pt.png" alt="Português" title="Português">
     </div>
+    <div class="lang-option" onclick="translatePage('en')">
+        <img src="https://flagcdn.com/w40/gb.png" alt="English" title="English">
+    </div>
+    <div class="lang-option" onclick="translatePage('fr')">
+        <img src="https://flagcdn.com/w40/fr.png" alt="Français" title="Français">
+    </div>
+    <div class="lang-option" onclick="translatePage('es')">
+        <img src="https://flagcdn.com/w40/es.png" alt="Español" title="Español">
+    </div>
+</div>
+
+<div id="google_translate_element" style="display:none;"></div>
 </header>
 
     <header class="hero">
