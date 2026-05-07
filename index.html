@@ -235,5 +235,19 @@
     }
 </script>
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+window.onscroll = function() {
+    var header = document.querySelector(".main-header");
+    // Se o utilizador descer mais de 100px, o cabeçalho aparece
+    if (window.pageYOffset > 100) {
+        header.style.opacity = "1";
+        header.style.visibility = "visible";
+        header.style.transform = "translateY(0)";
+    } else {
+        // Se estiver no topo, ele esconde-se (ou podes deixar visível)
+        header.style.opacity = "0";
+        header.style.visibility = "hidden";
+        header.style.transform = "translateY(-100%)";
+    }
+};
 </body>
 </html>
