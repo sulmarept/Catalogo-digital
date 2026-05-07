@@ -13,7 +13,37 @@ body {
   line-height: 1.6;
   color: #333;
   background: #fff;
-  top: 0 !important; /* Essencial para o Google Translate não empurrar o site */
+  overflow-x: hidden; /* Garante que não há scroll lateral */
+  top: 0 !important; /* Impede o Google de empurrar o site */
+  position: static !important; 
+}
+
+/* --- HEADER FIXO --- */
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  z-index: 1100;
+  padding: 12px 0;
+  /* Removido o opacity 0 inicial para garantir que ele aparece */
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Se quiseres que ele só apareça depois do scroll, mantém esta lógica no JS, 
+   mas para teste, vamos garantir que ele está visível. */
+.main-header.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* Garante que o painel de bandeiras não bloqueia o clique na página */
+.floating-lang-panel {
+    pointer-events: auto;
+}
 }
 
 h1, h2, h3 {
