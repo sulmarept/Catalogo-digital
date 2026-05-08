@@ -17,9 +17,11 @@
         .service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease }
         .service-card:hover .service-image img { transform: scale(1.08) }
         
-        /* Limpeza Google */
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        /* Limpeza do Widget do Google */
+        .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
         body { top: 0px !important; position: static !important; }
+        .goog-te-gadget { color: transparent !important; }
+        #google_translate_element { display: none !important; }
     </style>
 </head>
 
@@ -138,9 +140,10 @@
         </div>
     </div>
 
-    <div id="google_translate_element" style="display:none;"></div>
+    <div id="google_translate_element"></div>
 
     <script type="text/javascript">
+        // 1. Inicialização
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'pt',
@@ -149,32 +152,37 @@
             }, 'google_translate_element');
         }
 
-        // FUNÇÃO DE TRADUÇÃO MELHORADA PARA CHROME
+        // 2. FUNÇÃO DE TRADUÇÃO (FORÇADA PARA CHROME)
         function translatePage(lang) {
-            var selectField = document.querySelector(".goog-te-combo");
+            var selectField = document.querySelector("select.goog-te-combo");
+            
             if (selectField) {
                 selectField.value = lang;
-                // Dispara o evento de mudança simulando interação real para o Chrome aceitar
-                var event = new Event('change', { bubbles: true, cancelable: true });
-                selectField.dispatchEvent(event);
+                // Dispara o evento de mudança (padrão)
+                selectField.dispatchEvent(new Event('change', { bubbles: true }));
+                // Dispara novamente como evento de UI para garantir que o Chrome detete
+                var evt = document.createEvent("HTMLEvents");
+                evt.initEvent("change", true, true);
+                selectField.dispatchEvent(evt);
             } else {
-                // Tenta novamente se o Google ainda não carregou
+                // Se o widget ainda não estiver pronto, aguarda e tenta de novo
                 setTimeout(function() { translatePage(lang); }, 500);
             }
         }
 
-        // DETEÇÃO AUTOMÁTICA
+        // 3. DETEÇÃO AUTOMÁTICA DO NAVEGADOR
         window.addEventListener('load', function() {
             var userLang = navigator.language || navigator.userLanguage; 
             var code = userLang.substring(0, 2).toLowerCase();
             var supported = ['en', 'es', 'fr'];
             
             if (supported.includes(code)) {
-                setTimeout(function() { translatePage(code); }, 1200); 
+                // Dá 1.5 segundos para o script do Google carregar antes da auto-tradução
+                setTimeout(function() { translatePage(code); }, 1500); 
             }
         });
 
-        // Resto dos scripts (Header, Modais, Scroll)
+        // --- SCRIPTS DE LAYOUT (Mantidos intactos) ---
         const header = document.getElementById("main-header");
         window.addEventListener("scroll", () => {
             if (window.scrollY > 200) { header.classList.add("show"); } 
@@ -210,5 +218,7 @@
         }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
 </body>
 </html>
