@@ -13,109 +13,38 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
   <style>
-    /* 1. CONFIGURAÇÃO GERAL DO CABEÇALHO (AZUL) */
-    .service-header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: #003087 !important; 
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
-    }
-
-    .service-header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 5%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .service-title {
-      color: #ffffff !important;
-      margin: 0;
-      font-weight: 700;
-    }
-
-    /* BOTÃO HOME (Fundo Branco, Texto Azul) */
-    .btn-home {
-      background-color: #ffffff !important;
-      color: #003087 !important;
-      padding: 8px 18px !important;
-      border-radius: 50px !important;
-      text-decoration: none !important;
-      font-weight: 700 !important;
-      display: flex !important;
-      align-items: center !important;
-      gap: 8px !important;
-      font-size: 0.9rem !important;
-    }
-
-    .btn-home i {
-      color: #003087 !important;
-    }
-
-    /* 2. OTIMIZAÇÃO PARA TELEMÓVEL (MOBILE) */
+    .service-header { position: fixed; top: 0; width: 100%; z-index: 1000; background: #003087 !important; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 15px rgba(0,0,0,0.2); }
+    .service-header-container { display: flex; align-items: center; justify-content: space-between; padding: 10px 5%; max-width: 1200px; margin: 0 auto; }
+    .service-title { color: #ffffff !important; margin: 0; font-weight: 700; }
+    .btn-home { background-color: #ffffff !important; color: #003087 !important; padding: 8px 18px !important; border-radius: 50px !important; text-decoration: none !important; font-weight: 700 !important; display: flex !important; align-items: center !important; gap: 8px !important; font-size: 0.9rem !important; }
+    .btn-home i { color: #003087 !important; }
     @media (max-width: 768px) {
-      .service-header {
-        transform: translateY(-100%);
-        opacity: 0;
-        padding: 12px 0 !important;
-      }
-
-      .service-header.header-scrolled {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
-      /* Esconder Logo e colocar Título no lugar */
-      .service-logo {
-        display: none !important;
-      }
-
-      .service-title {
-        display: block !important;
-        font-size: 1.1rem !important;
-        flex-grow: 1;
-        text-align: left;
-      }
-
-      /* Hero Ocupa a Tela Inteira */
-      .detail-hero {
-        height: 100vh !important;
-        min-height: 100vh !important;
-        margin-top: 0 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-      }
-
+      .service-header { transform: translateY(-100%); opacity: 0; padding: 12px 0 !important; }
+      .service-header.header-scrolled { transform: translateY(0); opacity: 1; }
+      .service-logo { display: none !important; }
+      .service-title { display: block !important; font-size: 1.1rem !important; flex-grow: 1; text-align: left; }
+      .detail-hero { height: 100vh !important; min-height: 100vh !important; margin-top: 0 !important; display: flex !important; align-items: center !important; justify-content: center !important; text-align: center !important; }
       .islands-grid { grid-template-columns: 1fr !important; }
     }
-
-    /* Animação para os elementos aparecerem ao fazer scroll */
-    .segment-section, .island-card {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease-out;
-    }
-    .segment-section.visible, .island-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .segment-section, .island-card { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+    .segment-section.visible, .island-card.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
+<div class="floating-lang-panel">
+    <div class="lang-option" onclick="changeLanguage('pt')"><img src="https://flagcdn.com/w40/pt.png" alt="PT"></div>
+    <div class="lang-option" onclick="changeLanguage('en')"><img src="https://flagcdn.com/w40/gb.png" alt="EN"></div>
+    <div class="lang-option" onclick="changeLanguage('fr')"><img src="https://flagcdn.com/w40/fr.png" alt="FR"></div>
+    <div class="lang-option" onclick="changeLanguage('es')"><img src="https://flagcdn.com/w40/es.png" alt="ES"></div>
+</div>
+
 <header class="service-header" id="service-header">
   <div class="service-header-container">
     <img src="imagens/logo-sulmare.svg" alt="Logotipo Sulmaré" class="service-logo">
-    <h1 class="service-title">Transporte</h1>
+    <h1 class="service-title" data-i18n="title">Transporte</h1>
     <a href="index.html" class="btn-home">
-      <i class="fas fa-home"></i> Início
+      <i class="fas fa-home"></i> <span data-i18n="nav-home">Início</span>
     </a>
   </div>
 </header>
@@ -123,9 +52,9 @@
 <section class="detail-hero" style="background:linear-gradient(rgba(0,48,135,.4),rgba(0,48,135,.6)),url('imagens/transporte-hero.jpg') center/cover no-repeat">
   <div class="detail-overlay"></div>
   <div class="detail-content">
-    <h2>Transporte Especializado</h2>
-    <p>Frota própria com cadeia de frio garantida e controlo em tempo real</p>
-    <a href="#" class="btn-explore" onclick='openModal("contact-modal")'>Solicitar Orçamento <i class="fas fa-envelope"></i></a>
+    <h2 data-i18n="hero-h2">Transporte Especializado</h2>
+    <p data-i18n="hero-p">Frota própria com cadeia de frio garantida e controlo em tempo real</p>
+    <a href="#" class="btn-explore" onclick='openModal("contact-modal")'><span data-i18n="btn-quote">Solicitar Orçamento</span> <i class="fas fa-envelope"></i></a>
   </div>
 </section>
 
@@ -133,47 +62,47 @@
   <section class="segment-section">
     <div class="segment-header">
       <div class="segment-icon"><i class="fas fa-truck"></i></div>
-      <h2>Frota, Equipamentos e Tecnologia</h2>
-      <p class="section-intro">Transporte refrigerado com rigoroso controlo de temperatura e tecnologia avançada para chegar a qualquer destino.</p>
+      <h2 data-i18n="seg1-title">Frota, Equipamentos e Tecnologia</h2>
+      <p class="section-intro" data-i18n="seg1-desc">Transporte refrigerado com rigoroso controlo de temperatura e tecnologia avançada para chegar a qualquer destino.</p>
     </div>
     <div class="islands-grid">
       <div class="island-card">
         <img src="imagens/transporte-frota.jpg" alt="Frota Moderna" class="island-image">
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-truck"></i></div>
-          <h4>Frota Moderna</h4>
-          <p>Veículos refrigerados de última geração equipados com sistemas de frio de alta precisão.</p>
+          <h4 data-i18n="card1-t">Frota Moderna</h4>
+          <p data-i18n="card1-d">Veículos refrigerados de última geração equipados com sistemas de frio de alta precisão.</p>
         </div>
       </div>
       <div class="island-card">
         <img src="imagens/transporte-temperaturas-flexiveis.jpg" alt="Temperaturas Flexíveis" class="island-image">
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-temperature-low"></i></div>
-          <h4>Temperaturas Flexíveis</h4>
-          <p>Controlo rigoroso entre 0ºC e -25ºC, adaptado às necessidades de cada tipo de pescado.</p>
+          <h4 data-i18n="card2-t">Temperaturas Flexíveis</h4>
+          <p data-i18n="card2-d">Controlo rigoroso entre 0ºC e -25ºC, adaptado às necessidades de cada tipo de pescado.</p>
         </div>
       </div>
       <div class="island-card">
         <img src="imagens/transporte-gps.jpg" alt="Monitorização GPS" class="island-image">
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-satellite"></i></div>
-          <h4>Monitorização GPS</h4>
-          <p>Rastreamento em tempo real da localização e da temperatura da carga em trânsito.</p>
+          <h4 data-i18n="card3-t">Monitorização GPS</h4>
+          <p data-i18n="card3-d">Rastreamento em tempo real da localização e da temperatura da carga em trânsito.</p>
         </div>
       </div>
       <div class="island-card">
         <img src="imagens/transporte-cargas.jpg" alt="Distribuição" class="island-image">
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-boxes-packing"></i></div>
-          <h4>Distribuição Eficiente</h4>
-          <p>Capacidade de entrega para cargas completas ou parciais com rotas otimizadas.</p>
+          <h4 data-i18n="card4-t">Distribuição Eficiente</h4>
+          <p data-i18n="card4-d">Capacidade de entrega para cargas completas ou parciais com rotas otimizadas.</p>
         </div>
       </div>
     </div>
   </section>
   <section class="detail-cta">
-    <h3>Precisa de transporte refrigerado de confiança?</h3>
-    <a href="#" class="btn-explore" onclick='openModal("contact-modal")'>Solicitar Orçamento <i class="fas fa-envelope"></i></a>
+    <h3 data-i18n="cta-title">Precisa de transporte refrigerado de confiança?</h3>
+    <a href="#" class="btn-explore" onclick='openModal("contact-modal")'><span data-i18n="btn-quote">Solicitar Orçamento</span> <i class="fas fa-envelope"></i></a>
   </section>
 </main>
 
@@ -185,53 +114,95 @@
 <div class="contact-modal" id="contact-modal">
   <div class="contact-modal-content">
     <button class="close-modal" onclick='closeModal("contact-modal")'>×</button>
-    <h3>Solicitar Orçamento</h3>
-    <a href="https://wa.me/351918031569" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Contactar via WhatsApp</a>
+    <h3 data-i18n="btn-quote">Solicitar Orçamento</h3>
+    <a href="https://wa.me/351918031569" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> <span data-i18n="modal-wa">Contactar via WhatsApp</span></a>
     <p style="margin-top:20px;font-size:.9rem;color:#666">Quinta da Arrocásia, Lote 3 - Alenquer</p>
   </div>
 </div>
 
 <footer class="service-footer">
-  <p>© 2026 Sulmaré – Empresa de Pesca, Lda. Todos os direitos reservados.</p>
+  <p data-i18n="footer">© 2026 Sulmaré – Empresa de Pesca, Lda. Todos os direitos reservados.</p>
 </footer>
 
 <script>
-  function openModal(e){
-    document.getElementById(e).classList.add("active");
-    document.body.style.overflow="hidden";
+  const translations = {
+      pt: {
+          "title": "Transporte", "nav-home": "Início",
+          "hero-h2": "Transporte Especializado", "hero-p": "Frota própria com cadeia de frio garantida e controlo em tempo real", "btn-quote": "Solicitar Orçamento",
+          "seg1-title": "Frota, Equipamentos e Tecnologia", "seg1-desc": "Transporte refrigerado com rigoroso controlo de temperatura e tecnologia avançada para chegar a qualquer destino.",
+          "card1-t": "Frota Moderna", "card1-d": "Veículos refrigerados de última geração equipados com sistemas de frio de alta precisão.",
+          "card2-t": "Temperaturas Flexíveis", "card2-d": "Controlo rigoroso entre 0ºC e -25ºC, adaptado às necessidades de cada tipo de pescado.",
+          "card3-t": "Monitorização GPS", "card3-d": "Rastreamento em tempo real da localização e da temperatura da carga em trânsito.",
+          "card4-t": "Distribuição Eficiente", "card4-d": "Capacidade de entrega para cargas completas ou parciais com rotas otimizadas.",
+          "cta-title": "Precisa de transporte refrigerado de confiança?", "modal-wa": "Contactar via WhatsApp", "footer": "© 2026 Sulmaré – Empresa de Pesca, Lda. Todos os direitos reservados."
+      },
+      en: {
+          "title": "Transport", "nav-home": "Home",
+          "hero-h2": "Specialized Transport", "hero-p": "Own fleet with guaranteed cold chain and real-time control", "btn-quote": "Request a Quote",
+          "seg1-title": "Fleet, Equipment, and Technology", "seg1-desc": "Refrigerated transport with strict temperature control and advanced technology to reach any destination.",
+          "card1-t": "Modern Fleet", "card1-d": "State-of-the-art refrigerated vehicles equipped with high-precision cooling systems.",
+          "card2-t": "Flexible Temperatures", "card2-d": "Strict control between 0ºC and -25ºC, adapted to the needs of each type of fish.",
+          "card3-t": "GPS Monitoring", "card3-d": "Real-time tracking of location and cargo temperature in transit.",
+          "card4-t": "Efficient Distribution", "card4-d": "Delivery capacity for full or partial loads with optimized routes.",
+          "cta-title": "Need reliable refrigerated transport?", "modal-wa": "Contact via WhatsApp", "footer": "© 2026 Sulmaré – Empresa de Pesca, Lda. All rights reserved."
+      },
+      fr: {
+          "title": "Transport", "nav-home": "Accueil",
+          "hero-h2": "Transport Spécialisé", "hero-p": "Flotte propre avec chaîne du froid garantie et contrôle en temps réel", "btn-quote": "Demander un Devis",
+          "seg1-title": "Flotte, Équipement et Technologie", "seg1-desc": "Transport réfrigéré avec un contrôle strict de la température et une technologie de pointe pour atteindre n'importe quelle destination.",
+          "card1-t": "Flotte Moderne", "card1-d": "Véhicules réfrigérés de dernière génération équipés de systèmes de refroidissement de haute précision.",
+          "card2-t": "Températures Flexibles", "card2-d": "Contrôle strict entre 0ºC et -25ºC, adapté aux besoins de chaque type de poisson.",
+          "card3-t": "Surveillance GPS", "card3-d": "Suivi en temps réel de l'emplacement et de la température de la cargaison en transit.",
+          "card4-t": "Distribution Efficace", "card4-d": "Capacité de livraison pour charges complètes ou partielles avec des itinéraires optimisés.",
+          "cta-title": "Besoin d'un transport réfrigéré fiable ?", "modal-wa": "Contact via WhatsApp", "footer": "© 2026 Sulmaré – Empresa de Pesca, Lda. Tous droits réservés."
+      },
+      es: {
+          "title": "Transporte", "nav-home": "Inicio",
+          "hero-h2": "Transporte Especializado", "hero-p": "Flota propia con cadena de frío garantizada y control en tiempo real", "btn-quote": "Solicitar Presupuesto",
+          "seg1-title": "Flota, Equipamiento y Tecnología", "seg1-desc": "Transporte refrigerado con estricto control de temperatura y tecnología avanzada para llegar a cualquier destino.",
+          "card1-t": "Flota Moderna", "card1-d": "Vehículos refrigerados de última generación equipados con sistemas de frío de alta precisión.",
+          "card2-t": "Temperaturas Flexibles", "card2-d": "Control riguroso entre 0ºC y -25ºC, adaptado a las necesidades de cada tipo de pescado.",
+          "card3-t": "Monitorización GPS", "card3-d": "Rastreo en tiempo real de la ubicación y temperatura de la carga en tránsito.",
+          "card4-t": "Distribución Eficiente", "card4-d": "Capacidad de entrega para cargas completas o parciales con rutas optimizadas.",
+          "cta-title": "¿Necesita transporte refrigerado de confianza?", "modal-wa": "Contactar por WhatsApp", "footer": "© 2026 Sulmaré – Empresa de Pesca, Lda. Todos los derechos reservados."
+      }
+  };
+
+  function changeLanguage(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[lang] && translations[lang][key]) {
+              el.innerText = translations[lang][key];
+          }
+      });
+      document.documentElement.lang = lang;
+      localStorage.setItem('preferredLang', lang);
   }
-  function closeModal(e){
-    document.getElementById(e).classList.remove("active");
-    document.body.style.overflow="auto";
-  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('preferredLang');
+      const browserLang = navigator.language.split('-')[0];
+      const finalLang = savedLang || (translations[browserLang] ? browserLang : 'pt');
+      changeLanguage(finalLang);
+  });
+
+  function openModal(e){ document.getElementById(e).classList.add("active"); document.body.style.overflow="hidden"; }
+  function closeModal(e){ document.getElementById(e).classList.remove("active"); document.body.style.overflow="auto"; }
   function revealOnScroll(){
     const e = document.querySelectorAll(".segment-section, .island-card");
-    e.forEach(el => {
-      if(el.getBoundingClientRect().top < window.innerHeight - 50) {
-        el.classList.add("visible");
-      }
-    });
+    e.forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add("visible"); });
   }
 
   const btnTop = document.getElementById("btn-top");
   const header = document.getElementById("service-header");
 
   window.addEventListener("scroll", () => {
-    // Lógica do cabeçalho
-    if (window.scrollY > 150) {
-      header.classList.add("header-scrolled");
-      btnTop.style.display = "flex";
-    } else {
-      header.classList.remove("header-scrolled");
-      btnTop.style.display = "none";
-    }
+    if (window.scrollY > 150) { header.classList.add("header-scrolled"); btnTop.style.display = "flex"; } 
+    else { header.classList.remove("header-scrolled"); btnTop.style.display = "none"; }
     revealOnScroll();
   });
 
-  btnTop.addEventListener("click", () => {
-    window.scrollTo({top:0, behavior:"smooth"});
-  });
-
+  btnTop.addEventListener("click", () => { window.scrollTo({top:0, behavior:"smooth"}); });
   window.addEventListener("load", revealOnScroll);
 </script>
 </body>
