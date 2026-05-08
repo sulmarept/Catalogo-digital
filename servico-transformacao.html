@@ -13,115 +13,40 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
   <style>
-    /* 1. CONFIGURAÇÃO GERAL DO CABEÇALHO (AZUL) */
-    .service-header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: #003087 !important; 
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
-    }
-
-    .service-header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 5%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .service-title {
-      color: #ffffff !important;
-      margin: 0;
-      font-weight: 700;
-    }
-
-    /* BOTÃO HOME (Fundo Branco, Texto Azul) */
-    .btn-home {
-      background-color: #ffffff !important;
-      color: #003087 !important;
-      padding: 8px 18px !important;
-      border-radius: 50px !important;
-      text-decoration: none !important;
-      font-weight: 700 !important;
-      display: flex !important;
-      align-items: center !important;
-      gap: 8px !important;
-      font-size: 0.9rem !important;
-    }
-
-    .btn-home i {
-      color: #003087 !important;
-    }
-
-    /* 2. OTIMIZAÇÃO PARA TELEMÓVEL (MOBILE) */
+    .service-header { position: fixed; top: 0; width: 100%; z-index: 1000; background: #003087 !important; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 15px rgba(0,0,0,0.2); }
+    .service-header-container { display: flex; align-items: center; justify-content: space-between; padding: 10px 5%; max-width: 1200px; margin: 0 auto; }
+    .service-title { color: #ffffff !important; margin: 0; font-weight: 700; }
+    .btn-home { background-color: #ffffff !important; color: #003087 !important; padding: 8px 18px !important; border-radius: 50px !important; text-decoration: none !important; font-weight: 700 !important; display: flex !important; align-items: center !important; gap: 8px !important; font-size: 0.9rem !important; }
+    .btn-home i { color: #003087 !important; }
     @media (max-width: 768px) {
-      /* Comportamento do Index: Escondido e aparece no scroll */
-      .service-header {
-        transform: translateY(-100%);
-        opacity: 0;
-        padding: 12px 0 !important;
-      }
-
-      .service-header.header-scrolled {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
-      /* ALTERAÇÃO PEDIDA: Esconder Logo e colocar Título no lugar */
-      .service-logo {
-        display: none !important;
-      }
-
-      .service-title {
-        display: block !important;
-        font-size: 1.1rem !important;
-        flex-grow: 1;
-        text-align: left;
-      }
-
-      /* Hero Ocupa a Tela Inteira */
-      .detail-hero {
-        height: 100vh !important;
-        min-height: 100vh !important;
-        margin-top: 0 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-      }
-
-      /* Ajustes de Grelha */
+      .service-header { transform: translateY(-100%); opacity: 0; padding: 12px 0 !important; }
+      .service-header.header-scrolled { transform: translateY(0); opacity: 1; }
+      .service-logo { display: none !important; }
+      .service-title { display: block !important; font-size: 1.1rem !important; flex-grow: 1; text-align: left; }
+      .detail-hero { height: 100vh !important; min-height: 100vh !important; margin-top: 0 !important; display: flex !important; align-items: center !important; justify-content: center !important; text-align: center !important; }
       .quality-side-by-side { flex-direction: column !important; }
       .quality-column { width: 100% !important; }
       .islands-grid { grid-template-columns: 1fr !important; }
     }
-
-    /* Animação para os elementos aparecerem ao fazer scroll */
-    .segment-section, .island-card {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease-out;
-    }
-    .segment-section.visible, .island-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .segment-section, .island-card { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+    .segment-section.visible, .island-card.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
+<div class="floating-lang-panel">
+    <div class="lang-option" onclick="changeLanguage('pt')"><img src="https://flagcdn.com/w40/pt.png" alt="PT"></div>
+    <div class="lang-option" onclick="changeLanguage('en')"><img src="https://flagcdn.com/w40/gb.png" alt="EN"></div>
+    <div class="lang-option" onclick="changeLanguage('fr')"><img src="https://flagcdn.com/w40/fr.png" alt="FR"></div>
+    <div class="lang-option" onclick="changeLanguage('es')"><img src="https://flagcdn.com/w40/es.png" alt="ES"></div>
+</div>
+
 <header class="service-header" id="service-header">
   <div class="service-header-container">
     <img src="imagens/logo-sulmare.svg" alt="Logotipo Sulmaré" class="service-logo">
-    
-    <h1 class="service-title">Transformação</h1>
-    
+    <h1 class="service-title" data-i18n="title">Transformação</h1>
     <a href="index.html" class="btn-home">
-      <i class="fas fa-home"></i> Início
+      <i class="fas fa-home"></i> <span data-i18n="nav-home">Início</span>
     </a>
   </div>
 </header>
@@ -129,9 +54,9 @@
 <section class="detail-hero" style="background: linear-gradient(rgba(0,48,135,0.4), rgba(0,48,135,0.6)), url('imagens/transformacao-hero.jpg') center / cover no-repeat;">
   <div class="detail-overlay"></div>
   <div class="detail-content">
-    <h2>Transformação de Alta Qualidade</h2>
-    <p>Do mar até ao prato com rigor e excelência</p>
-    <a href="#" class="btn-explore" onclick="openModal('contact-modal')">Solicitar Orçamento <i class="fas fa-envelope"></i></a>
+    <h2 data-i18n="hero-h2">Transformação de Alta Qualidade</h2>
+    <p data-i18n="hero-p">Do mar até ao prato com rigor e excelência</p>
+    <a href="#" class="btn-explore" onclick="openModal('contact-modal')"><span data-i18n="btn-quote">Solicitar Orçamento</span> <i class="fas fa-envelope"></i></a>
   </div>
 </section>
 
@@ -140,51 +65,51 @@
   <section class="segment-section">
     <div class="segment-header">
       <div class="segment-icon"><i class="fas fa-certificate"></i></div>
-      <h2>1. Qualidade</h2>
-      <p class="section-intro">Controlamos todos os parâmetros críticos para garantir que cada produto cumpre os mais altos padrões.</p>
+      <h2 data-i18n="seg1-title">1. Qualidade</h2>
+      <p class="section-intro" data-i18n="seg1-desc">Controlamos todos os parâmetros críticos para garantir que cada produto cumpre os mais altos padrões.</p>
     </div>
 
     <div class="quality-side-by-side" style="display: flex; gap: 60px;">
       <div class="quality-column">
-        <h3 class="subtheme-title"><i class="fas fa-fish"></i> Qualidade dos Frescos</h3>
+        <h3 class="subtheme-title"><i class="fas fa-fish"></i> <span data-i18n="fresc-title">Qualidade dos Frescos</span></h3>
         <div class="islands-grid mini-grid">
           <div class="island-card">
             <img src="imagens/frescos-origem.jpg" class="island-image">
-            <div class="island-content"><h4>Origem e Rastreabilidade</h4><p>Seleção rigorosa nas melhores lotas e fornecedores certificados.</p></div>
+            <div class="island-content"><h4 data-i18n="f-1-t">Origem e Rastreabilidade</h4><p data-i18n="f-1-d">Seleção rigorosa nas melhores lotas e fornecedores certificados.</p></div>
           </div>
           <div class="island-card">
             <img src="imagens/frescos-frio.jpg" class="island-image">
-            <div class="island-content"><h4>Cadeia de frio</h4><p>Controlo rigoroso desde a captura até a entrega final.</p></div>
+            <div class="island-content"><h4 data-i18n="f-2-t">Cadeia de frio</h4><p data-i18n="f-2-d">Controlo rigoroso desde a captura até a entrega final.</p></div>
           </div>
           <div class="island-card">
             <img src="imagens/frescos-processamento.jpg" class="island-image">
-            <div class="island-content"><h4>Processamento diário</h4><p>Preparação "just-in-time" para frescura máxima.</p></div>
+            <div class="island-content"><h4 data-i18n="f-3-t">Processamento diário</h4><p data-i18n="f-3-d">Preparação "just-in-time" para frescura máxima.</p></div>
           </div>
           <div class="island-card">
             <img src="imagens/frescos-organoleptica.jpg" class="island-image">
-            <div class="island-content"><h4>Análise Organoléptica</h4><p>Garantia de frescura, brilho e odor característicos.</p></div>
+            <div class="island-content"><h4 data-i18n="f-4-t">Análise Organoléptica</h4><p data-i18n="f-4-d">Garantia de frescura, brilho e odor característicos.</p></div>
           </div>
         </div>
       </div>
 
       <div class="quality-column">
-        <h3 class="subtheme-title"><i class="fas fa-snowflake"></i> Qualidade dos Congelados</h3>
+        <h3 class="subtheme-title"><i class="fas fa-snowflake"></i> <span data-i18n="cong-title">Qualidade dos Congelados</span></h3>
         <div class="islands-grid mini-grid">
           <div class="island-card">
             <img src="imagens/congelados-ultra.jpg" class="island-image">
-            <div class="island-content"><h4>Ultra congelação</h4><p>Tecnologia que preserva a estrutura celular e nutrientes.</p></div>
+            <div class="island-content"><h4 data-i18n="c-1-t">Ultra congelação</h4><p data-i18n="c-1-d">Tecnologia que preserva a estrutura celular e nutrientes.</p></div>
           </div>
           <div class="island-card">
             <img src="imagens/congelados-seguranca.jpg" class="island-image">
-            <div class="island-content"><h4>Segurança alimentar</h4><p>Rigorosa análise laboratorial e controlo de metais.</p></div>
+            <div class="island-content"><h4 data-i18n="c-2-t">Segurança alimentar</h4><p data-i18n="c-2-d">Rigorosa análise laboratorial e controlo de metais.</p></div>
           </div>
           <div class="island-card">
             <img src="imagens/congelados-conveniencia.jpg" class="island-image">
-            <div class="island-content"><h4>Rentabilidade</h4><p>Cortes precisos, calibres uniformes e desperdício zero.</p></div>
+            <div class="island-content"><h4 data-i18n="c-3-t">Rentabilidade</h4><p data-i18n="c-3-d">Cortes precisos, calibres uniformes e desperdício zero.</p></div>
           </div>
           <div class="island-card">
             <img src="imagens/congelados-disponibilidade.jpg" class="island-image">
-            <div class="island-content"><h4>Disponibilidade</h4><p>Garantia de stock durante todo o ano.</p></div>
+            <div class="island-content"><h4 data-i18n="c-4-t">Disponibilidade</h4><p data-i18n="c-4-d">Garantia de stock durante todo o ano.</p></div>
           </div>
         </div>
       </div>
@@ -194,36 +119,36 @@
   <section class="segment-section">
     <div class="segment-header">
       <div class="segment-icon"><i class="fas fa-fish"></i></div>
-      <h2>2. Processo dos Frescos</h2>
+      <h2 data-i18n="seg2-title">2. Processo dos Frescos</h2>
     </div>
     <div class="islands-grid">
-      <div class="island-card"><img src="imagens/frescos-selecao.jpg" class="island-image"><div class="island-content"><h4>Seleção</h4><p>Triagem baseada na frescura e espécie.</p></div></div>
-      <div class="island-card"><img src="imagens/frescos-lavagem.jpg" class="island-image"><div class="island-content"><h4>Lavagem</h4><p>Higienização com água potável controlada.</p></div></div>
-      <div class="island-card"><img src="imagens/frescos-embalamento.jpg" class="island-image"><div class="island-content"><h4>Embalamento</h4><p>Vácuo, cuvete ou caixa térmica.</p></div></div>
-      <div class="island-card"><img src="imagens/frescos-acondicionamento.jpg" class="island-image"><div class="island-content"><h4>Acondicionamento</h4><p>Película protetora contra desidratação.</p></div></div>
-      <div class="island-card"><img src="imagens/frescos-rotulagem.jpg" class="island-image"><div class="island-content"><h4>Rotulagem</h4><p>Rastreabilidade total e conformidade legal.</p></div></div>
-      <div class="island-card"><img src="imagens/frescos-armazenamento.jpg" class="island-image"><div class="island-content"><h4>Armazenamento</h4><p>Câmaras de frio otimizadas para expedição.</p></div></div>
+      <div class="island-card"><img src="imagens/frescos-selecao.jpg" class="island-image"><div class="island-content"><h4 data-i18n="pf-1-t">Seleção</h4><p data-i18n="pf-1-d">Triagem baseada na frescura e espécie.</p></div></div>
+      <div class="island-card"><img src="imagens/frescos-lavagem.jpg" class="island-image"><div class="island-content"><h4 data-i18n="pf-2-t">Lavagem</h4><p data-i18n="pf-2-d">Higienização com água potável controlada.</p></div></div>
+      <div class="island-card"><img src="imagens/frescos-embalamento.jpg" class="island-image"><div class="island-content"><h4 data-i18n="pf-3-t">Embalamento</h4><p data-i18n="pf-3-d">Vácuo, cuvete ou caixa térmica.</p></div></div>
+      <div class="island-card"><img src="imagens/frescos-acondicionamento.jpg" class="island-image"><div class="island-content"><h4 data-i18n="pf-4-t">Acondicionamento</h4><p data-i18n="pf-4-d">Película protetora contra desidratação.</p></div></div>
+      <div class="island-card"><img src="imagens/frescos-rotulagem.jpg" class="island-image"><div class="island-content"><h4 data-i18n="pf-5-t">Rotulagem</h4><p data-i18n="pf-5-d">Rastreabilidade total e conformidade legal.</p></div></div>
+      <div class="island-card"><img src="imagens/frescos-armazenamento.jpg" class="island-image"><div class="island-content"><h4 data-i18n="pf-6-t">Armazenamento</h4><p data-i18n="pf-6-d">Câmaras de frio otimizadas para expedição.</p></div></div>
     </div>
   </section>
 
   <section class="segment-section">
     <div class="segment-header">
       <div class="segment-icon"><i class="fas fa-snowflake"></i></div>
-      <h2>3. Processo dos Congelados</h2>
+      <h2 data-i18n="seg3-title">3. Processo dos Congelados</h2>
     </div>
     <div class="islands-grid">
-      <div class="island-card"><img src="imagens/transformacao-congelados-selecao.jpg" class="island-image"><div class="island-content"><h4>Seleção</h4><p>Calibração mantendo a cadeia de frio.</p></div></div>
-      <div class="island-card"><img src="imagens/transformacao-congelados-corte.jpg" class="island-image"><div class="island-content"><h4>Corte</h4><p>Linhas preparadas para cortes de precisão.</p></div></div>
-      <div class="island-card"><img src="imagens/transformacao-congelados-vidragem.jpg" class="island-image"><div class="island-content"><h4>Vidragem</h4><p>Proteção que preserva a qualidade do produto.</p></div></div>
-      <div class="island-card"><img src="imagens/transformacao-congelados-congelacao.jpg" class="island-image"><div class="island-content"><h4>Congelação</h4><p>Túneis de ultra-congelação rápida.</p></div></div>
-      <div class="island-card"><img src="imagens/transformacao-congelados-embalamento.jpg" class="island-image"><div class="island-content"><h4>Embalamento</h4><p>Formatos adaptados ao cliente final.</p></div></div>
-      <div class="island-card"><img src="imagens/transformacao-congelados-armazenamento.jpg" class="island-image"><div class="island-content"><h4>Armazenamento</h4><p>Câmaras monitorizadas a temperaturas negativas.</p></div></div>
+      <div class="island-card"><img src="imagens/transformacao-congelados-selecao.jpg" class="island-image"><div class="island-content"><h4 data-i18n="pc-1-t">Seleção</h4><p data-i18n="pc-1-d">Calibração mantendo a cadeia de frio.</p></div></div>
+      <div class="island-card"><img src="imagens/transformacao-congelados-corte.jpg" class="island-image"><div class="island-content"><h4 data-i18n="pc-2-t">Corte</h4><p data-i18n="pc-2-d">Linhas preparadas para cortes de precisão.</p></div></div>
+      <div class="island-card"><img src="imagens/transformacao-congelados-vidragem.jpg" class="island-image"><div class="island-content"><h4 data-i18n="pc-3-t">Vidragem</h4><p data-i18n="pc-3-d">Proteção que preserva a qualidade do produto.</p></div></div>
+      <div class="island-card"><img src="imagens/transformacao-congelados-congelacao.jpg" class="island-image"><div class="island-content"><h4 data-i18n="pc-4-t">Congelação</h4><p data-i18n="pc-4-d">Túneis de ultra-congelação rápida.</p></div></div>
+      <div class="island-card"><img src="imagens/transformacao-congelados-embalamento.jpg" class="island-image"><div class="island-content"><h4 data-i18n="pc-5-t">Embalamento</h4><p data-i18n="pc-5-d">Formatos adaptados ao cliente final.</p></div></div>
+      <div class="island-card"><img src="imagens/transformacao-congelados-armazenamento.jpg" class="island-image"><div class="island-content"><h4 data-i18n="pc-6-t">Armazenamento</h4><p data-i18n="pc-6-d">Câmaras monitorizadas a temperaturas negativas.</p></div></div>
     </div>
   </section>
 
   <section class="detail-cta">
-    <h3>Pronto para trabalhar connosco?</h3>
-    <a href="#" class="btn-explore" onclick="openModal('contact-modal')">Solicitar Orçamento <i class="fas fa-envelope"></i></a>
+    <h3 data-i18n="cta-title">Pronto para trabalhar connosco?</h3>
+    <a href="#" class="btn-explore" onclick="openModal('contact-modal')"><span data-i18n="btn-quote">Solicitar Orçamento</span> <i class="fas fa-envelope"></i></a>
   </section>
 </main>
 
@@ -232,19 +157,80 @@
 <div class="contact-modal" id="contact-modal">
   <div class="contact-modal-content">
     <button class="close-modal" onclick="closeModal('contact-modal')">×</button>
-    <h3>Solicitar Orçamento</h3>
+    <h3 data-i18n="btn-quote">Solicitar Orçamento</h3>
     <a href="https://wa.me/351918031569" class="btn-whatsapp" target="_blank">
-      <i class="fab fa-whatsapp"></i> Contactar via WhatsApp
+      <i class="fab fa-whatsapp"></i> <span data-i18n="modal-wa">Contactar via WhatsApp</span>
     </a>
     <p style="margin-top: 20px; font-size: 0.9rem; color: #666;">Quinta da Arrocásia, Lote 3 - Alenquer</p>
   </div>
 </div>
 
 <footer class="service-footer">
-  <p>© 2026 Sulmaré – Empresa de Pesca, Lda. Todos os direitos reservados.</p>
+  <p data-i18n="footer">© 2026 Sulmaré – Empresa de Pesca, Lda. Todos os direitos reservados.</p>
 </footer>
 
 <script>
+  const translations = {
+      pt: {
+          "title": "Transformação", "nav-home": "Início",
+          "hero-h2": "Transformação de Alta Qualidade", "hero-p": "Do mar até ao prato com rigor e excelência", "btn-quote": "Solicitar Orçamento",
+          "seg1-title": "1. Qualidade", "seg1-desc": "Controlamos todos os parâmetros críticos para garantir que cada produto cumpre os mais altos padrões.",
+          "fresc-title": "Qualidade dos Frescos", "f-1-t": "Origem e Rastreabilidade", "f-1-d": "Seleção rigorosa nas melhores lotas e fornecedores certificados.", "f-2-t": "Cadeia de frio", "f-2-d": "Controlo rigoroso desde a captura até a entrega final.", "f-3-t": "Processamento diário", "f-3-d": "Preparação \"just-in-time\" para frescura máxima.", "f-4-t": "Análise Organoléptica", "f-4-d": "Garantia de frescura, brilho e odor característicos.",
+          "cong-title": "Qualidade dos Congelados", "c-1-t": "Ultra congelação", "c-1-d": "Tecnologia que preserva a estrutura celular e nutrientes.", "c-2-t": "Segurança alimentar", "c-2-d": "Rigorosa análise laboratorial e controlo de metais.", "c-3-t": "Rentabilidade", "c-3-d": "Cortes precisos, calibres uniformes e desperdício zero.", "c-4-t": "Disponibilidade", "c-4-d": "Garantia de stock durante todo o ano.",
+          "seg2-title": "2. Processo dos Frescos", "pf-1-t": "Seleção", "pf-1-d": "Triagem baseada na frescura e espécie.", "pf-2-t": "Lavagem", "pf-2-d": "Higienização com água potável controlada.", "pf-3-t": "Embalamento", "pf-3-d": "Vácuo, cuvete ou caixa térmica.", "pf-4-t": "Acondicionamento", "pf-4-d": "Película protetora contra desidratação.", "pf-5-t": "Rotulagem", "pf-5-d": "Rastreabilidade total e conformidade legal.", "pf-6-t": "Armazenamento", "pf-6-d": "Câmaras de frio otimizadas para expedição.",
+          "seg3-title": "3. Processo dos Congelados", "pc-1-t": "Seleção", "pc-1-d": "Calibração mantendo a cadeia de frio.", "pc-2-t": "Corte", "pc-2-d": "Linhas preparadas para cortes de precisão.", "pc-3-t": "Vidragem", "pc-3-d": "Proteção que preserva a qualidade do produto.", "pc-4-t": "Congelação", "pc-4-d": "Túneis de ultra-congelação rápida.", "pc-5-t": "Embalamento", "pc-5-d": "Formatos adaptados ao cliente final.", "pc-6-t": "Armazenamento", "pc-6-d": "Câmaras monitorizadas a temperaturas negativas.",
+          "cta-title": "Pronto para trabalhar connosco?", "modal-wa": "Contactar via WhatsApp", "footer": "© 2026 Sulmaré – Empresa de Pesca, Lda. Todos os direitos reservados."
+      },
+      en: {
+          "title": "Transformation", "nav-home": "Home",
+          "hero-h2": "High Quality Transformation", "hero-p": "From sea to plate with rigor and excellence", "btn-quote": "Request a Quote",
+          "seg1-title": "1. Quality", "seg1-desc": "We control all critical parameters to ensure each product meets the highest standards.",
+          "fresc-title": "Fresh Quality", "f-1-t": "Origin and Traceability", "f-1-d": "Rigorous selection in the best auctions and certified suppliers.", "f-2-t": "Cold chain", "f-2-d": "Strict control from capture to final delivery.", "f-3-t": "Daily processing", "f-3-d": "\"Just-in-time\" preparation for maximum freshness.", "f-4-t": "Organoleptic Analysis", "f-4-d": "Guarantee of characteristic freshness, brightness, and odor.",
+          "cong-title": "Frozen Quality", "c-1-t": "Ultra freezing", "c-1-d": "Technology that preserves cellular structure and nutrients.", "c-2-t": "Food safety", "c-2-d": "Rigorous laboratory analysis and metal control.", "c-3-t": "Profitability", "c-3-d": "Precise cuts, uniform sizes, and zero waste.", "c-4-t": "Availability", "c-4-d": "Guaranteed stock all year round.",
+          "seg2-title": "2. Fresh Process", "pf-1-t": "Selection", "pf-1-d": "Sorting based on freshness and species.", "pf-2-t": "Washing", "pf-2-d": "Sanitization with controlled drinking water.", "pf-3-t": "Packaging", "pf-3-d": "Vacuum, tray, or thermal box.", "pf-4-t": "Conditioning", "pf-4-d": "Protective film against dehydration.", "pf-5-t": "Labeling", "pf-5-d": "Total traceability and legal compliance.", "pf-6-t": "Storage", "pf-6-d": "Optimized cold rooms for shipping.",
+          "seg3-title": "3. Frozen Process", "pc-1-t": "Selection", "pc-1-d": "Calibration while maintaining the cold chain.", "pc-2-t": "Cutting", "pc-2-d": "Lines prepared for precision cuts.", "pc-3-t": "Glazing", "pc-3-d": "Protection that preserves product quality.", "pc-4-t": "Freezing", "pc-4-d": "Fast ultra-freezing tunnels.", "pc-5-t": "Packaging", "pc-5-d": "Formats adapted to the final customer.", "pc-6-t": "Storage", "pc-6-d": "Monitored chambers at negative temperatures.",
+          "cta-title": "Ready to work with us?", "modal-wa": "Contact via WhatsApp", "footer": "© 2026 Sulmaré – Empresa de Pesca, Lda. All rights reserved."
+      },
+      fr: {
+          "title": "Transformation", "nav-home": "Accueil",
+          "hero-h2": "Transformation de Haute Qualité", "hero-p": "De la mer à l'assiette avec rigueur et excellence", "btn-quote": "Demander un Devis",
+          "seg1-title": "1. Qualité", "seg1-desc": "Nous contrôlons tous les paramètres critiques pour garantir que chaque produit répond aux normes les plus strictes.",
+          "fresc-title": "Qualité du Frais", "f-1-t": "Origine et Traçabilité", "f-1-d": "Sélection rigoureuse dans les meilleures criées et fournisseurs certifiés.", "f-2-t": "Chaîne du froid", "f-2-d": "Contrôle strict de la capture à la livraison finale.", "f-3-t": "Traitement quotidien", "f-3-d": "Préparation «just-in-time» pour une fraîcheur maximale.", "f-4-t": "Analyse Organoleptique", "f-4-d": "Garantie de fraîcheur, brillance et odeur caractéristiques.",
+          "cong-title": "Qualité du Surgelé", "c-1-t": "Surgélation ultra", "c-1-d": "Technologie qui préserve la structure cellulaire et les nutriments.", "c-2-t": "Sécurité alimentaire", "c-2-d": "Analyse de laboratoire rigoureuse et contrôle des métaux.", "c-3-t": "Rentabilité", "c-3-d": "Coupes précises, tailles uniformes et zéro déchet.", "c-4-t": "Disponibilité", "c-4-d": "Stock garanti toute l'année.",
+          "seg2-title": "2. Processus du Frais", "pf-1-t": "Sélection", "pf-1-d": "Tri basé sur la fraîcheur et l'espèce.", "pf-2-t": "Lavage", "pf-2-d": "Désinfection à l'eau potable contrôlée.", "pf-3-t": "Emballage", "pf-3-d": "Sous vide, barquette ou boîte isotherme.", "pf-4-t": "Conditionnement", "pf-4-d": "Film protecteur contre la déshydratation.", "pf-5-t": "Étiquetage", "pf-5-d": "Traçabilité totale et conformité légale.", "pf-6-t": "Stockage", "pf-6-d": "Chambres froides optimisées pour l'expédition.",
+          "seg3-title": "3. Processus du Surgelé", "pc-1-t": "Sélection", "pc-1-d": "Calibrage en maintenant la chaîne du froid.", "pc-2-t": "Coupe", "pc-2-d": "Lignes préparées pour des coupes de précision.", "pc-3-t": "Glaçage", "pc-3-d": "Protection qui préserve la qualité du produit.", "pc-4-t": "Surgélation", "pc-4-d": "Tunnels de surgélation rapide.", "pc-5-t": "Emballage", "pc-5-d": "Formats adaptés au client final.", "pc-6-t": "Stockage", "pc-6-d": "Chambres surveillées à températures négatives.",
+          "cta-title": "Prêt à travailler avec nous?", "modal-wa": "Contact via WhatsApp", "footer": "© 2026 Sulmaré – Empresa de Pesca, Lda. Tous droits réservés."
+      },
+      es: {
+          "title": "Transformación", "nav-home": "Inicio",
+          "hero-h2": "Transformación de Alta Calidad", "hero-p": "Del mar al plato con rigor y excelencia", "btn-quote": "Solicitar Presupuesto",
+          "seg1-title": "1. Calidad", "seg1-desc": "Controlamos todos los parámetros críticos para garantizar que cada producto cumpla con los más altos estándares.",
+          "fresc-title": "Calidad del Fresco", "f-1-t": "Origen y Trazabilidad", "f-1-d": "Selección rigurosa en las mejores lonjas y proveedores certificados.", "f-2-t": "Cadena de frío", "f-2-d": "Control estricto desde la captura hasta la entrega final.", "f-3-t": "Procesamiento diario", "f-3-d": "Preparación \"just-in-time\" para máxima frescura.", "f-4-t": "Análisis Organoléptico", "f-4-d": "Garantía de frescura, brillo y olor característicos.",
+          "cong-title": "Calidad del Congelado", "c-1-t": "Ultracongelación", "c-1-d": "Tecnología que preserva la estructura celular y los nutrientes.", "c-2-t": "Seguridad alimentaria", "c-2-d": "Análisis de laboratorio riguroso y control de metales.", "c-3-t": "Rentabilidad", "c-3-d": "Cortes precisos, tamaños uniformes y cero desperdicio.", "c-4-t": "Disponibilidad", "c-4-d": "Stock garantizado todo el año.",
+          "seg2-title": "2. Proceso del Fresco", "pf-1-t": "Selección", "pf-1-d": "Clasificación basada en frescura y especie.", "pf-2-t": "Lavado", "pf-2-d": "Higienización con agua potable controlada.", "pf-3-t": "Envasado", "pf-3-d": "Al vacío, bandeja o caja térmica.", "pf-4-t": "Acondicionamiento", "pf-4-d": "Película protectora contra la deshidratación.", "pf-5-t": "Etiquetado", "pf-5-d": "Trazabilidad total y cumplimiento legal.", "pf-6-t": "Almacenamiento", "pf-6-d": "Cámaras frigoríficas optimizadas para expedición.",
+          "seg3-title": "3. Proceso del Congelado", "pc-1-t": "Selección", "pc-1-d": "Calibración manteniendo la cadena de frío.", "pc-2-t": "Corte", "pc-2-d": "Líneas preparadas para cortes de precisión.", "pc-3-t": "Glaseado", "pc-3-d": "Protección que preserva la calidad del producto.", "pc-4-t": "Congelación", "pc-4-d": "Túneles de ultracongelación rápida.", "pc-5-t": "Envasado", "pc-5-d": "Formatos adaptados al cliente final.", "pc-6-t": "Almacenamiento", "pc-6-d": "Cámaras monitorizadas a temperaturas negativas.",
+          "cta-title": "¿Listo para trabajar con nosotros?", "modal-wa": "Contactar por WhatsApp", "footer": "© 2026 Sulmaré – Empresa de Pesca, Lda. Todos los derechos reservados."
+      }
+  };
+
+  function changeLanguage(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[lang] && translations[lang][key]) {
+              el.innerText = translations[lang][key];
+          }
+      });
+      document.documentElement.lang = lang;
+      localStorage.setItem('preferredLang', lang);
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('preferredLang');
+      const browserLang = navigator.language.split('-')[0];
+      const finalLang = savedLang || (translations[browserLang] ? browserLang : 'pt');
+      changeLanguage(finalLang);
+  });
+
   const header = document.getElementById('service-header');
   const btnTop = document.getElementById('btn-top');
 
@@ -252,26 +238,15 @@
   function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = 'auto'; }
 
   window.addEventListener('scroll', () => {
-    // Comportamento do Cabeçalho: Aparece após 150px de scroll
-    if (window.scrollY > 150) {
-      header.classList.add('header-scrolled');
-      btnTop.style.display = 'flex';
-    } else {
-      header.classList.remove('header-scrolled');
-      btnTop.style.display = 'none';
-    }
-    
-    // Revelar elementos no scroll
+    if (window.scrollY > 150) { header.classList.add('header-scrolled'); btnTop.style.display = 'flex'; } 
+    else { header.classList.remove('header-scrolled'); btnTop.style.display = 'none'; }
     const elements = document.querySelectorAll('.segment-section, .island-card');
-    elements.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 50) {
-        el.classList.add('visible');
-      }
-    });
+    elements.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('visible'); });
   });
-
   btnTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+</script>
+</body>
+</html>
 </script>
 
 </body>
