@@ -13,109 +13,38 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
   <style>
-    /* 1. CONFIGURAÇÃO GERAL DO CABEÇALHO (AZUL) */
-    .service-header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: #003087 !important; 
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
-    }
-
-    .service-header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 5%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .service-title {
-      color: #ffffff !important;
-      margin: 0;
-      font-weight: 700;
-    }
-
-    /* BOTÃO HOME (Fundo Branco, Texto Azul) */
-    .btn-home {
-      background-color: #ffffff !important;
-      color: #003087 !important;
-      padding: 8px 18px !important;
-      border-radius: 50px !important;
-      text-decoration: none !important;
-      font-weight: 700 !important;
-      display: flex !important;
-      align-items: center !important;
-      gap: 8px !important;
-      font-size: 0.9rem !important;
-    }
-
-    .btn-home i {
-      color: #003087 !important;
-    }
-
-    /* 2. OTIMIZAÇÃO PARA TELEMÓVEL (MOBILE) */
+    .service-header { position: fixed; top: 0; width: 100%; z-index: 1000; background: #003087 !important; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 15px rgba(0,0,0,0.2); }
+    .service-header-container { display: flex; align-items: center; justify-content: space-between; padding: 10px 5%; max-width: 1200px; margin: 0 auto; }
+    .service-title { color: #ffffff !important; margin: 0; font-weight: 700; }
+    .btn-home { background-color: #ffffff !important; color: #003087 !important; padding: 8px 18px !important; border-radius: 50px !important; text-decoration: none !important; font-weight: 700 !important; display: flex !important; align-items: center !important; gap: 8px !important; font-size: 0.9rem !important; }
+    .btn-home i { color: #003087 !important; }
     @media (max-width: 768px) {
-      .service-header {
-        transform: translateY(-100%);
-        opacity: 0;
-        padding: 12px 0 !important;
-      }
-
-      .service-header.header-scrolled {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
-      /* Esconder Logo e colocar Título no lugar */
-      .service-logo {
-        display: none !important;
-      }
-
-      .service-title {
-        display: block !important;
-        font-size: 1.1rem !important;
-        flex-grow: 1;
-        text-align: left;
-      }
-
-      /* Hero Ocupa a Tela Inteira */
-      .detail-hero {
-        height: 100vh !important;
-        min-height: 100vh !important;
-        margin-top: 0 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-      }
-
+      .service-header { transform: translateY(-100%); opacity: 0; padding: 12px 0 !important; }
+      .service-header.header-scrolled { transform: translateY(0); opacity: 1; }
+      .service-logo { display: none !important; }
+      .service-title { display: block !important; font-size: 1.1rem !important; flex-grow: 1; text-align: left; }
+      .detail-hero { height: 100vh !important; min-height: 100vh !important; margin-top: 0 !important; display: flex !important; align-items: center !important; justify-content: center !important; text-align: center !important; }
       .islands-grid { grid-template-columns: 1fr !important; }
     }
-
-    /* Animação para os elementos aparecerem ao fazer scroll */
-    .segment-section, .island-card {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease-out;
-    }
-    .segment-section.visible, .island-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .segment-section, .island-card { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+    .segment-section.visible, .island-card.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
+<div class="floating-lang-panel">
+    <div class="lang-option" onclick="changeLanguage('pt')"><img src="https://flagcdn.com/w40/pt.png" alt="PT"></div>
+    <div class="lang-option" onclick="changeLanguage('en')"><img src="https://flagcdn.com/w40/gb.png" alt="EN"></div>
+    <div class="lang-option" onclick="changeLanguage('fr')"><img src="https://flagcdn.com/w40/fr.png" alt="FR"></div>
+    <div class="lang-option" onclick="changeLanguage('es')"><img src="https://flagcdn.com/w40/es.png" alt="ES"></div>
+</div>
+
 <header class="service-header" id="service-header">
   <div class="service-header-container">
     <img src="imagens/logo-sulmare.svg" alt="Logotipo Sulmaré" class="service-logo">
-    <h1 class="service-title">Logística do Frio</h1>
+    <h1 class="service-title" data-i18n="title">Logística do Frio</h1>
     <a href="index.html" class="btn-home">
-      <i class="fas fa-home"></i> Início
+      <i class="fas fa-home"></i> <span data-i18n="nav-home">Início</span>
     </a>
   </div>
 </header>
@@ -123,9 +52,9 @@
 <section class="detail-hero" style="background:linear-gradient(rgba(0,48,135,.4),rgba(0,48,135,.6)),url('imagens/logistica-hero.jpg') center/cover no-repeat">
   <div class="detail-overlay"></div>
   <div class="detail-content">
-    <h2>Logística do Frio</h2>
-    <p>Armazenagem e distribuição com temperatura controlada</p>
-    <a href="#" class="btn-explore" onclick='openModal("contact-modal")'>Solicitar Orçamento <i class="fas fa-envelope"></i></a>
+    <h2 data-i18n="hero-h2">Logística do Frio</h2>
+    <p data-i18n="hero-p">Armazenagem e distribuição com temperatura controlada</p>
+    <a href="#" class="btn-explore" onclick='openModal("contact-modal")'><span data-i18n="btn-quote">Solicitar Orçamento</span> <i class="fas fa-envelope"></i></a>
   </div>
 </section>
 
@@ -133,55 +62,55 @@
   <section class="segment-section">
     <div class="segment-header">
       <div class="segment-icon"><i class="fas fa-warehouse"></i></div>
-      <h2>Capacidade, Infraestrutura e Tecnologia</h2>
-      <p class="section-intro">Soluções completas de armazenagem e logística com controlo rigoroso de temperatura, tecnologia avançada e infraestrutura moderna.</p>
+      <h2 data-i18n="seg1-title">Capacidade, Infraestrutura e Tecnologia</h2>
+      <p class="section-intro" data-i18n="seg1-desc">Soluções completas de armazenagem e logística com controlo rigoroso de temperatura, tecnologia avançada e infraestrutura moderna.</p>
     </div>
     <div class="islands-grid">
       <div class="island-card">
         <img src="imagens/logistica-capacidade-paletes.jpg" alt="3.300 Paletes" class="island-image">
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-pallet"></i></div>
-          <h4>3.300 Paletes</h4>
-          <p>Capacidade total para armazenamento em larga escala, garantindo stock constante.</p>
+          <h4 data-i18n="card1-t">3.300 Paletes</h4>
+          <p data-i18n="card1-d">Capacidade total para armazenamento em larga escala, garantindo stock constante.</p>
         </div>
       </div>
       <div class="island-card">
         <img src="imagens/logistica-capacidade-volume.jpg" alt="12.000 m³" class="island-image">
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-cube"></i></div>
-          <h4>12.000 m³</h4>
-          <p>Câmaras frigoríficas modernas e eficientes para conservação ideal.</p>
+          <h4 data-i18n="card2-t">12.000 m³</h4>
+          <p data-i18n="card2-d">Câmaras frigoríficas modernas e eficientes para conservação ideal.</p>
         </div>
       </div>
       <div class="island-card">
         <img src="imagens/logistica-monitorizacao.jpg" alt="Monitorização 24/7" class="island-image">
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-eye"></i></div>
-          <h4>Monitorização 24/7</h4>
-          <p>Controlo contínuo com alertas imediatos para garantir a segurança alimentar.</p>
+          <h4 data-i18n="card3-t">Monitorização 24/7</h4>
+          <p data-i18n="card3-d">Controlo contínuo com alertas imediatos para garantir a segurança alimentar.</p>
         </div>
       </div>
       <div class="island-card">
         <img src="imagens/logistica-wms.jpg" alt="Sistema WMS" class="island-image">
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-laptop-code"></i></div>
-          <h4>Sistema WMS</h4>
-          <p>Gestão avançada de stocks e rastreabilidade total de todos os lotes.</p>
+          <h4 data-i18n="card4-t">Sistema WMS</h4>
+          <p data-i18n="card4-d">Gestão avançada de stocks e rastreabilidade total de todos os lotes.</p>
         </div>
       </div>
       <div class="island-card">
         <img src="imagens/logistica-emergencia.jpg" alt="Energia de Emergência" class="island-image">
         <div class="island-content">
           <div class="island-icon"><i class="fas fa-bolt"></i></div>
-          <h4>Energia de Emergência</h4>
-          <p>Geradores e sistemas UPS para garantir continuidade operacional em qualquer situação.</p>
+          <h4 data-i18n="card5-t">Energia de Emergência</h4>
+          <p data-i18n="card5-d">Geradores e sistemas UPS para garantir continuidade operacional em qualquer situação.</p>
         </div>
       </div>
     </div>
   </section>
   <section class="detail-cta">
-    <h3>Precisa de soluções de logística frigorífica?</h3>
-    <a href="#" class="btn-explore" onclick='openModal("contact-modal")'>Solicitar Orçamento <i class="fas fa-envelope"></i></a>
+    <h3 data-i18n="cta-title">Precisa de soluções de logística frigorífica?</h3>
+    <a href="#" class="btn-explore" onclick='openModal("contact-modal")'><span data-i18n="btn-quote">Solicitar Orçamento</span> <i class="fas fa-envelope"></i></a>
   </section>
 </main>
 
@@ -193,53 +122,98 @@
 <div class="contact-modal" id="contact-modal">
   <div class="contact-modal-content">
     <button class="close-modal" onclick='closeModal("contact-modal")'>×</button>
-    <h3>Solicitar Orçamento</h3>
-    <a href="https://wa.me/351918031569" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Contactar via WhatsApp</a>
+    <h3 data-i18n="btn-quote">Solicitar Orçamento</h3>
+    <a href="https://wa.me/351918031569" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> <span data-i18n="modal-wa">Contactar via WhatsApp</span></a>
     <p style="margin-top:20px;font-size:.9rem;color:#666">Quinta da Arrocásia, Lote 3 - Alenquer</p>
   </div>
 </div>
 
 <footer class="service-footer">
-  <p>© 2026 Sulmaré – Empresa de Pesca, Lda. Todos os direitos reservados.</p>
+  <p data-i18n="footer">© 2026 Sulmaré – Empresa de Pesca, Lda. Todos os direitos reservados.</p>
 </footer>
 
 <script>
-  function openModal(e){
-    document.getElementById(e).classList.add("active");
-    document.body.style.overflow="hidden";
+  const translations = {
+      pt: {
+          "title": "Logística do Frio", "nav-home": "Início",
+          "hero-h2": "Logística do Frio", "hero-p": "Armazenagem e distribuição com temperatura controlada", "btn-quote": "Solicitar Orçamento",
+          "seg1-title": "Capacidade, Infraestrutura e Tecnologia", "seg1-desc": "Soluções completas de armazenagem e logística com controlo rigoroso de temperatura, tecnologia avançada e infraestrutura moderna.",
+          "card1-t": "3.300 Paletes", "card1-d": "Capacidade total para armazenamento em larga escala, garantindo stock constante.",
+          "card2-t": "12.000 m³", "card2-d": "Câmaras frigoríficas modernas e eficientes para conservação ideal.",
+          "card3-t": "Monitorização 24/7", "card3-d": "Controlo contínuo com alertas imediatos para garantir a segurança alimentar.",
+          "card4-t": "Sistema WMS", "card4-d": "Gestão avançada de stocks e rastreabilidade total de todos os lotes.",
+          "card5-t": "Energia de Emergência", "card5-d": "Geradores e sistemas UPS para garantir continuidade operacional em qualquer situação.",
+          "cta-title": "Precisa de soluções de logística frigorífica?", "modal-wa": "Contactar via WhatsApp", "footer": "© 2026 Sulmaré – Empresa de Pesca, Lda. Todos os direitos reservados."
+      },
+      en: {
+          "title": "Cold Logistics", "nav-home": "Home",
+          "hero-h2": "Cold Logistics", "hero-p": "Storage and distribution with controlled temperature", "btn-quote": "Request a Quote",
+          "seg1-title": "Capacity, Infrastructure, and Technology", "seg1-desc": "Complete storage and logistics solutions with strict temperature control, advanced technology, and modern infrastructure.",
+          "card1-t": "3,300 Pallets", "card1-d": "Total capacity for large-scale storage, ensuring constant stock.",
+          "card2-t": "12,000 m³", "card2-d": "Modern and efficient cold rooms for optimal preservation.",
+          "card3-t": "24/7 Monitoring", "card3-d": "Continuous control with immediate alerts to ensure food safety.",
+          "card4-t": "WMS System", "card4-d": "Advanced stock management and total traceability of all batches.",
+          "card5-t": "Emergency Power", "card5-d": "Generators and UPS systems to ensure operational continuity in any situation.",
+          "cta-title": "Do you need cold logistics solutions?", "modal-wa": "Contact via WhatsApp", "footer": "© 2026 Sulmaré – Empresa de Pesca, Lda. All rights reserved."
+      },
+      fr: {
+          "title": "Logistique du Froid", "nav-home": "Accueil",
+          "hero-h2": "Logistique du Froid", "hero-p": "Stockage et distribution à température contrôlée", "btn-quote": "Demander un Devis",
+          "seg1-title": "Capacité, Infrastructure et Technologie", "seg1-desc": "Solutions complètes de stockage et de logistique avec un contrôle strict de la température, une technologie de pointe et une infrastructure moderne.",
+          "card1-t": "3 300 Palettes", "card1-d": "Capacité totale de stockage à grande échelle, assurant un stock constant.",
+          "card2-t": "12 000 m³", "card2-d": "Chambres froides modernes et efficaces pour une conservation optimale.",
+          "card3-t": "Surveillance 24/7", "card3-d": "Contrôle continu avec alertes immédiates pour garantir la sécurité alimentaire.",
+          "card4-t": "Système WMS", "card4-d": "Gestion avancée des stocks et traçabilité totale de tous les lots.",
+          "card5-t": "Énergie d'Urgence", "card5-d": "Générateurs et systèmes UPS pour assurer la continuité opérationnelle en toute situation.",
+          "cta-title": "Besoin de solutions de logistique du froid ?", "modal-wa": "Contact via WhatsApp", "footer": "© 2026 Sulmaré – Empresa de Pesca, Lda. Tous droits réservés."
+      },
+      es: {
+          "title": "Logística del Frío", "nav-home": "Inicio",
+          "hero-h2": "Logística del Frío", "hero-p": "Almacenaje y distribución con temperatura controlada", "btn-quote": "Solicitar Presupuesto",
+          "seg1-title": "Capacidad, Infraestructura y Tecnología", "seg1-desc": "Soluciones completas de almacenamiento y logística con control estricto de temperatura, tecnología avanzada e infraestructura moderna.",
+          "card1-t": "3.300 Paletas", "card1-d": "Capacidad total para almacenamiento a gran escala, garantizando stock constante.",
+          "card2-t": "12.000 m³", "card2-d": "Cámaras frigoríficas modernas y eficientes para una conservación ideal.",
+          "card3-t": "Monitorización 24/7", "card3-d": "Control continuo con alertas inmediatas para garantizar la seguridad alimentaria.",
+          "card4-t": "Sistema WMS", "card4-d": "Gestión avanzada de stocks y trazabilidad total de todos los lotes.",
+          "card5-t": "Energía de Emergencia", "card5-d": "Generadores y sistemas UPS para asegurar la continuidad operativa en cualquier situación.",
+          "cta-title": "¿Necesita soluciones de logística frigorífica?", "modal-wa": "Contactar por WhatsApp", "footer": "© 2026 Sulmaré – Empresa de Pesca, Lda. Todos los derechos reservados."
+      }
+  };
+
+  function changeLanguage(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[lang] && translations[lang][key]) {
+              el.innerText = translations[lang][key];
+          }
+      });
+      document.documentElement.lang = lang;
+      localStorage.setItem('preferredLang', lang);
   }
-  function closeModal(e){
-    document.getElementById(e).classList.remove("active");
-    document.body.style.overflow="auto";
-  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('preferredLang');
+      const browserLang = navigator.language.split('-')[0];
+      const finalLang = savedLang || (translations[browserLang] ? browserLang : 'pt');
+      changeLanguage(finalLang);
+  });
+
+  function openModal(e){ document.getElementById(e).classList.add("active"); document.body.style.overflow="hidden"; }
+  function closeModal(e){ document.getElementById(e).classList.remove("active"); document.body.style.overflow="auto"; }
   function revealOnScroll(){
     const e = document.querySelectorAll(".segment-section, .island-card");
-    e.forEach(el => {
-      if(el.getBoundingClientRect().top < window.innerHeight - 50) {
-        el.classList.add("visible");
-      }
-    });
+    e.forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add("visible"); });
   }
 
   const btnTop = document.getElementById("btn-top");
   const header = document.getElementById("service-header");
 
   window.addEventListener("scroll", () => {
-    // Lógica do cabeçalho
-    if (window.scrollY > 150) {
-      header.classList.add("header-scrolled");
-      btnTop.style.display = "flex";
-    } else {
-      header.classList.remove("header-scrolled");
-      btnTop.style.display = "none";
-    }
+    if (window.scrollY > 150) { header.classList.add("header-scrolled"); btnTop.style.display = "flex"; } 
+    else { header.classList.remove("header-scrolled"); btnTop.style.display = "none"; }
     revealOnScroll();
   });
-
-  btnTop.addEventListener("click", () => {
-    window.scrollTo({top:0, behavior:"smooth"});
-  });
-
+  btnTop.addEventListener("click", () => { window.scrollTo({top:0, behavior:"smooth"}); });
   window.addEventListener("load", revealOnScroll);
 </script>
 </body>
