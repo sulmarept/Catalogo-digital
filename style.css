@@ -108,7 +108,3 @@ body {
 .linkedin { background: #0077b5; }
 .facebook { background: #1877f2; }
 .instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-
-/* GOOGLE CLEANUP */
-.goog-te-banner-frame.skiptranslate { display: none !important; }
-body { top: 0px !important; }
