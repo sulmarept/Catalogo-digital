@@ -16,28 +16,22 @@
         .service-card.visible .service-image { opacity: 1; transform: translateY(0) }
         .service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease }
         .service-card:hover .service-image img { transform: scale(1.08) }
-        
-        /* Limpeza do Widget do Google */
-        .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
-        body { top: 0px !important; position: static !important; }
-        .goog-te-gadget { color: transparent !important; }
-        #google_translate_element { display: none !important; }
     </style>
 </head>
 
 <body>
     <div class="floating-lang-panel">
-        <div class="lang-option" onclick="translatePage('pt')">
-            <img src="https://flagcdn.com/w40/pt.png" alt="Português">
+        <div class="lang-option" onclick="changeLanguage('pt')">
+            <img src="https://flagcdn.com/w40/pt.png" alt="PT">
         </div>
-        <div class="lang-option" onclick="translatePage('en')">
-            <img src="https://flagcdn.com/w40/gb.png" alt="English">
+        <div class="lang-option" onclick="changeLanguage('en')">
+            <img src="https://flagcdn.com/w40/gb.png" alt="EN">
         </div>
-        <div class="lang-option" onclick="translatePage('fr')">
-            <img src="https://flagcdn.com/w40/fr.png" alt="Français">
+        <div class="lang-option" onclick="changeLanguage('fr')">
+            <img src="https://flagcdn.com/w40/fr.png" alt="FR">
         </div>
-        <div class="lang-option" onclick="translatePage('es')">
-            <img src="https://flagcdn.com/w40/es.png" alt="Español">
+        <div class="lang-option" onclick="changeLanguage('es')">
+            <img src="https://flagcdn.com/w40/es.png" alt="ES">
         </div>
     </div>
 
@@ -45,9 +39,9 @@
         <div class="header-container">
             <img src="imagens/logo-sulmare.svg" alt="Sulmaré" class="header-logo">
             <nav>
-                <a href="#" id="btn-inicio-nav">Início</a>
-                <a href="#servicos" class="nav-link">Serviços</a>
-                <a href="#" onclick="openContactModal()">Contacto</a>
+                <a href="#" id="btn-inicio-nav" data-i18n="nav-inicio">Início</a>
+                <a href="#servicos" class="nav-link" data-i18n="nav-servicos">Serviços</a>
+                <a href="#" onclick="openContactModal()" data-i18n="nav-contacto">Contacto</a>
             </nav>
         </div>
     </header>
@@ -59,57 +53,59 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <img src="imagens/logo-sulmare.svg" alt="Logotipo Sulmaré" class="hero-logo">
-            <h2 class="catalog-title">CATÁLOGO DE SERVIÇOS 2026</h2>
-            <p class="catalog-desc">Do mar até ao seu cliente com qualidade e frio garantido</p>
-            <a href="#servicos" class="btn-explore" id="btn-explorar">Explorar Serviços <i class="fas fa-arrow-down"></i></a>
+            <h2 class="catalog-title" data-i18n="hero-title">CATÁLOGO DE SERVIÇOS 2026</h2>
+            <p class="catalog-desc" data-i18n="hero-desc">Do mar até ao seu cliente com qualidade e frio garantido</p>
+            <a href="#servicos" class="btn-explore" id="btn-explorar">
+                <span data-i18n="hero-btn">Explorar Serviços</span> <i class="fas fa-arrow-down"></i>
+            </a>
         </div>
     </header>
 
     <section class="strategic-location" id="localizacao">
         <div class="location-container">
             <div class="location-text">
-                <h2>Localização Estratégica</h2>
-                <p>Estar próximo da Sulmaré é estar no centro da distribuição em Portugal. A nossa localização estratégica permite-nos aceder aos principais entrepostos logísticos, otimizando prazos e garantindo que todos os produtos chegam ao destino com a eficiência que o mercado exige.</p>
+                <h2 data-i18n="loc-title">Localização Estratégica</h2>
+                <p data-i18n="loc-desc">Estar próximo da Sulmaré é estar no centro da distribuição em Portugal. A nossa localização estratégica permite-nos aceder aos principais entrepostos logísticos, otimizando prazos e garantindo que todos os produtos chegam ao destino com a eficiência que o mercado exige.</p>
             </div>
             <div class="map-wrapper">
-                <img src="imagens/mapa-final.jpg" alt="Mapa Estratégico Sulmaré" class="strategic-map">
+                <img src="imagens/mapa-final.jpg" alt="Mapa" class="strategic-map">
             </div>
         </div>
     </section>
 
     <section class="company-intro">
         <div class="location-content">
-            <h2>Sobre a Sulmaré</h2>
-            <p class="lead">Mais de 40 anos de experiência no setor da pesca, transformação e logística do frio.</p>
+            <h2 data-i18n="about-title">Sobre a Sulmaré</h2>
+            <p class="lead" data-i18n="about-lead">Mais de 40 anos de experiência no setor da pesca, transformação e logística do frio.</p>
             <div class="highlights">
-                <div class="highlight-item"><i class="fas fa-ship"></i> <span>40+</span><p>Anos de Experiência</p></div>
-                <div class="highlight-item"><i class="fas fa-users"></i> <span>3500+</span><p>Clientes Ativos</p></div>
-                <div class="highlight-item"><i class="fas fa-fish"></i> <span>20 ton</span><p>Produção Diária</p></div>
-                <div class="highlight-item"><i class="fas fa-certificate"></i> <span>IFS Food</span><p>Certificação V7</p></div>
+                <div class="highlight-item"><i class="fas fa-ship"></i> <span>40+</span><p data-i18n="stat-1">Anos de Experiência</p></div>
+                <div class="highlight-item"><i class="fas fa-users"></i> <span>3500+</span><p data-i18n="stat-2">Clientes Ativos</p></div>
+                <div class="highlight-item"><i class="fas fa-fish"></i> <span>20 ton</span><p data-i18n="stat-3">Produção Diária</p></div>
+                <div class="highlight-item"><i class="fas fa-certificate"></i> <span>IFS Food</span><p data-i18n="stat-4">Certificação V7</p></div>
             </div>
         </div>
     </section>
 
     <section class="services" id="servicos">
-        <h2>Os Nossos Serviços</h2>
+        <h2 data-i18n="services-title">Os Nossos Serviços</h2>
         <div class="service-grid">
             <a href="servico-transformacao.html" class="service-card">
                 <div class="service-image"><img src="imagens/transformacao-hero.jpg" alt="Transformação"></div>
-                <h3>Transformação</h3>
-                <p>Processamento e filetagem de pescado com controlo total da cadeia de frio.</p>
-                <span class="btn-details">Saiba Mais →</span>
+                <h3 data-i18n="serv-1-t">Transformação</h3>
+                <p data-i18n="serv-1-d">Processamento e filetagem de pescado com controlo total da cadeia de frio.</p>
+                <span class="btn-details" data-i18n="more">Saiba Mais →</span>
             </a>
             <a href="servico-logistica.html" class="service-card">
-                <div class="service-image"><img src="imagens/logistica-hero.jpg" alt="Logística do Frio"></div>
-                <h3>Logística do Frio</h3>
-                <p>Armazenagem, controlo de temperatura e distribuição refrigerada.</p>
-                <span class="btn-details">Saiba Mais →</span>
+                <div class="service-image"><img src="imagens/logistica-hero.jpg" alt="Logística"></div>
+                <h3 data-i18n="serv-2-t">Logística do Frio</h3>
+                <p data-i18n="serv-2-d">Armazenagem, controlo de temperatura e distribuição refrigerada.</p>
+                <span class="btn-details" data-i18n="more">Saiba Mais →</span>
             </a>
             <a href="servico-transporte.html" class="service-card">
                 <div class="service-image"><img src="imagens/transporte-hero.jpg" alt="Transporte"></div>
-                <h3>Transporte</h3>
-                <p>Transporte refrigerado com frota própria e cobertura nacional.</p>
-                <span class="btn-details">Saiba Mais →</span>
+                <h3 data-i18n="serv-3-t">Transporte</h3>
+                <p data-i18n="serv-3-d">Transporte refrigerado com frota própria e cobertura nacional.</p>
+                <span class="btn-details" data-i18n="more">Saiba Mais →</span>
             </a>
         </div>
     </section>
@@ -122,8 +118,10 @@
     <div class="contact-modal" id="contact-modal">
         <div class="contact-modal-content">
             <button class="close-modal" onclick='closeModal("contact-modal")'>×</button>
-            <h3>Solicitar Orçamento</h3>
-            <a href="https://wa.me/351918031569" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Contactar via WhatsApp</a>
+            <h3 data-i18n="modal-title">Solicitar Orçamento</h3>
+            <a href="https://wa.me/351918031569" class="btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> <span data-i18n="modal-wa">Contactar via WhatsApp</span>
+            </a>
             <p style="margin-top:20px;font-size:.9rem;color:#666">Quinta da Arrocásia, Lote 3 - Alenquer</p>
         </div>
     </div>
@@ -131,70 +129,161 @@
     <div class="social-modal" id="social-modal">
         <div class="social-modal-content">
             <button class="close-modal" onclick="closeSocialModal()">×</button>
-            <h3>Siga-nos</h3>
+            <h3 data-i18n="social-follow">Siga-nos</h3>
             <div class="social-icons">
-                <a href="https://www.linkedin.com/company/grupo-sulmare/" target="_blank" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.facebook.com/gruposulmare/" target="_blank" class="social-link facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/sulmaree/" target="_blank" class="social-link instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/grupo-sulmare/" target="_blank" class="social-link linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.facebook.com/gruposulmare/" target="_blank" class="social-link facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/sulmaree/" target="_blank" class="social-link instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
         </div>
     </div>
 
-    <div id="google_translate_element"></div>
+    <script>
+        const translations = {
+            pt: {
+                "nav-inicio": "Início",
+                "nav-servicos": "Serviços",
+                "nav-contacto": "Contacto",
+                "hero-title": "CATÁLOGO DE SERVIÇOS 2026",
+                "hero-desc": "Do mar até ao seu cliente com qualidade e frio garantido",
+                "hero-btn": "Explorar Serviços",
+                "loc-title": "Localização Estratégica",
+                "loc-desc": "Estar próximo da Sulmaré é estar no centro da distribuição em Portugal. A nossa localização estratégica permite-nos aceder aos principais entrepostos logísticos, otimizando prazos e garantindo que todos os produtos chegam ao destino com a eficiência que o mercado exige.",
+                "about-title": "Sobre a Sulmaré",
+                "about-lead": "Mais de 40 anos de experiência no setor da pesca, transformação e logística do frio.",
+                "stat-1": "Anos de Experiência",
+                "stat-2": "Clientes Ativos",
+                "stat-3": "Produção Diária",
+                "stat-4": "Certificação V7",
+                "services-title": "Os Nossos Serviços",
+                "serv-1-t": "Transformação",
+                "serv-1-d": "Processamento e filetagem de pescado com controlo total da cadeia de frio.",
+                "serv-2-t": "Logística do Frio",
+                "serv-2-d": "Armazenagem, controlo de temperatura e distribuição refrigerada.",
+                "serv-3-t": "Transporte",
+                "serv-3-d": "Transporte refrigerado com frota própria e cobertura nacional.",
+                "more": "Saiba Mais →",
+                "modal-title": "Solicitar Orçamento",
+                "modal-wa": "Contactar via WhatsApp",
+                "social-follow": "Siga-nos"
+            },
+            en: {
+                "nav-inicio": "Home",
+                "nav-servicos": "Services",
+                "nav-contacto": "Contact",
+                "hero-title": "SERVICE CATALOG 2026",
+                "hero-desc": "From the sea to your client with quality and guaranteed cold",
+                "hero-btn": "Explore Services",
+                "loc-title": "Strategic Location",
+                "loc-desc": "Being close to Sulmaré is being at the heart of distribution in Portugal. Our strategic location allows us to access the main logistical hubs, optimizing deadlines and ensuring that all products reach their destination with the efficiency the market demands.",
+                "about-title": "About Sulmaré",
+                "about-lead": "Over 40 years of experience in the fishing, processing, and cold logistics sector.",
+                "stat-1": "Years of Experience",
+                "stat-2": "Active Clients",
+                "stat-3": "Daily Production",
+                "stat-4": "V7 Certification",
+                "services-title": "Our Services",
+                "serv-1-t": "Transformation",
+                "serv-1-d": "Fish processing and filleting with full cold chain control.",
+                "serv-2-t": "Cold Logistics",
+                "serv-2-d": "Storage, temperature control, and refrigerated distribution.",
+                "serv-3-t": "Transport",
+                "serv-3-d": "Refrigerated transport with own fleet and national coverage.",
+                "more": "Learn More →",
+                "modal-title": "Request a Quote",
+                "modal-wa": "Contact via WhatsApp",
+                "social-follow": "Follow us"
+            },
+            fr: {
+                "nav-inicio": "Accueil",
+                "nav-servicos": "Services",
+                "nav-contacto": "Contact",
+                "hero-title": "CATALOGUE DE SERVICES 2026",
+                "hero-desc": "De la mer à votre client avec qualité et froid garanti",
+                "hero-btn": "Explorer les Services",
+                "loc-title": "Emplacement Stratégique",
+                "loc-desc": "Être proche de Sulmaré, c'est être au cœur de la distribution au Portugal. Notre emplacement stratégique nous permet d'accéder aux principaux pôles logistiques, optimisant les délais et garantissant que tous les produits arrivent à destination avec l'efficacité exigée par le marché.",
+                "about-title": "À propos de Sulmaré",
+                "about-lead": "Plus de 40 ans d'expérience dans le secteur de la pêche, de la transformation et de la logistique du froid.",
+                "stat-1": "Années d'Expérience",
+                "stat-2": "Clients Actifs",
+                "stat-3": "Production Quotidienne",
+                "stat-4": "Certification V7",
+                "services-title": "Nos Services",
+                "serv-1-t": "Transformation",
+                "serv-1-d": "Transformation et filetage du poisson avec un contrôle total de la chaîne du froid.",
+                "serv-2-t": "Logistique du Froid",
+                "serv-2-d": "Stockage, contrôle de la température et distribution réfrigérée.",
+                "serv-3-t": "Transport",
+                "serv-3-d": "Transport réfrigéré avec sa propre flotte et une couverture nationale.",
+                "more": "En savoir plus →",
+                "modal-title": "Demander un Devis",
+                "modal-wa": "Contact via WhatsApp",
+                "social-follow": "Suivez-nous"
+            },
+            es: {
+                "nav-inicio": "Inicio",
+                "nav-servicos": "Servicios",
+                "nav-contacto": "Contacto",
+                "hero-title": "CATÁLOGO DE SERVICIOS 2026",
+                "hero-desc": "Del mar a su cliente con calidad y frío garantizado",
+                "hero-btn": "Explorar Servicios",
+                "loc-title": "Ubicación Estratégica",
+                "loc-desc": "Estar cerca de Sulmaré es estar en el centro de la distribución en Portugal. Nuestra ubicación estratégica nos permite acceder a los principales centros logísticos, optimizando plazos y garantizando que todos los productos lleguen a su destino con la eficiencia que el mercado exige.",
+                "about-title": "Sobre Sulmaré",
+                "about-lead": "Más de 40 años de experiencia en el sector de la pesca, transformación y logística del frío.",
+                "stat-1": "Años de Experiencia",
+                "stat-2": "Clientes Activos",
+                "stat-3": "Producción Diaria",
+                "stat-4": "Certificación V7",
+                "services-title": "Nuestros Servicios",
+                "serv-1-t": "Transformación",
+                "serv-1-d": "Procesamiento y fileteado de pescado con control total de la cadena de frío.",
+                "serv-2-t": "Logística del Frío",
+                "serv-2-d": "Almacenaje, control de temperatura y distribución refrigerada.",
+                "serv-3-t": "Transporte",
+                "serv-3-d": "Transporte refrigerado con flota propia y cobertura nacional.",
+                "more": "Saber más →",
+                "modal-title": "Solicitar Presupuesto",
+                "modal-wa": "Contactar por WhatsApp",
+                "social-follow": "Síguenos"
+            }
+        };
 
-    <script type="text/javascript">
-        // 1. Inicialização
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'pt',
-                includedLanguages: 'pt,en,es,fr',
-                autoDisplay: false
-            }, 'google_translate_element');
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+            document.documentElement.lang = lang;
+            localStorage.setItem('preferredLang', lang);
         }
 
-        // 2. FUNÇÃO DE TRADUÇÃO (FORÇADA PARA CHROME)
-        function translatePage(lang) {
-            var selectField = document.querySelector("select.goog-te-combo");
-            
-            if (selectField) {
-                selectField.value = lang;
-                // Dispara o evento de mudança (padrão)
-                selectField.dispatchEvent(new Event('change', { bubbles: true }));
-                // Dispara novamente como evento de UI para garantir que o Chrome detete
-                var evt = document.createEvent("HTMLEvents");
-                evt.initEvent("change", true, true);
-                selectField.dispatchEvent(evt);
-            } else {
-                // Se o widget ainda não estiver pronto, aguarda e tenta de novo
-                setTimeout(function() { translatePage(lang); }, 500);
-            }
-        }
-
-        // 3. DETEÇÃO AUTOMÁTICA DO NAVEGADOR
-        window.addEventListener('load', function() {
-            var userLang = navigator.language || navigator.userLanguage; 
-            var code = userLang.substring(0, 2).toLowerCase();
-            var supported = ['en', 'es', 'fr'];
-            
-            if (supported.includes(code)) {
-                // Dá 1.5 segundos para o script do Google carregar antes da auto-tradução
-                setTimeout(function() { translatePage(code); }, 1500); 
-            }
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang');
+            const browserLang = navigator.language.split('-')[0];
+            const finalLang = savedLang || (translations[browserLang] ? browserLang : 'pt');
+            changeLanguage(finalLang);
         });
 
-        // --- SCRIPTS DE LAYOUT (Mantidos intactos) ---
         const header = document.getElementById("main-header");
         window.addEventListener("scroll", () => {
-            if (window.scrollY > 200) { header.classList.add("show"); } 
-            else { header.classList.remove("show"); }
+            if (window.scrollY > 200) header.classList.add("show");
+            else header.classList.remove("show");
             revealOnScroll();
         });
 
         function revealOnScroll() {
             document.querySelectorAll(".service-card").forEach(card => {
-                if (card.getBoundingClientRect().top < window.innerHeight - 100) {
-                    card.classList.add("visible");
-                }
+                if (card.getBoundingClientRect().top < window.innerHeight - 100) card.classList.add("visible");
             });
         }
 
@@ -203,22 +292,18 @@
         function openSocialModal() { document.getElementById("social-modal").classList.add("active"); }
         function closeSocialModal() { document.getElementById("social-modal").classList.remove("active"); }
 
-        document.getElementById("btn-explorar").addEventListener("click", function(e) {
+        document.getElementById("btn-explorar").addEventListener("click", e => {
             e.preventDefault();
             document.getElementById("servicos").scrollIntoView({ behavior: "smooth" });
         });
-        document.getElementById("btn-inicio-nav").addEventListener("click", function(e) {
+        document.getElementById("btn-inicio-nav").addEventListener("click", e => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
         });
-
         window.onclick = function(e) {
             if (e.target.classList.contains("contact-modal")) closeModal("contact-modal");
             if (e.target.classList.contains("social-modal")) closeSocialModal();
         }
     </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-</body>
-</html>
 </body>
 </html>
