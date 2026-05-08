@@ -12,11 +12,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     
     <style>
-        /* Manter as animações que tinhas no cabeçalho do HTML */
         .service-image { opacity: 0; transform: translateY(30px); transition: all .8s ease-out }
         .service-card.visible .service-image { opacity: 1; transform: translateY(0) }
         .service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease }
         .service-card:hover .service-image img { transform: scale(1.08) }
+        
+        /* Limpeza Google */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; position: static !important; }
     </style>
 </head>
 
@@ -138,7 +141,6 @@
     <div id="google_translate_element" style="display:none;"></div>
 
     <script type="text/javascript">
-        // 1. Inicialização do Google Translate
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'pt',
@@ -147,26 +149,39 @@
             }, 'google_translate_element');
         }
 
-        // 2. Função de Tradução corrigida
+        // FUNÇÃO DE TRADUÇÃO MELHORADA PARA CHROME
         function translatePage(lang) {
             var selectField = document.querySelector(".goog-te-combo");
             if (selectField) {
                 selectField.value = lang;
-                selectField.dispatchEvent(new Event('change'));
+                // Dispara o evento de mudança simulando interação real para o Chrome aceitar
+                var event = new Event('change', { bubbles: true, cancelable: true });
+                selectField.dispatchEvent(event);
+            } else {
+                // Tenta novamente se o Google ainda não carregou
+                setTimeout(function() { translatePage(lang); }, 500);
             }
         }
 
-        // 3. Controlo do Header no Scroll
-        const header = document.getElementById("main-header");
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 200) {
-                header.classList.add("show");
-            } else {
-                header.classList.remove("show");
+        // DETEÇÃO AUTOMÁTICA
+        window.addEventListener('load', function() {
+            var userLang = navigator.language || navigator.userLanguage; 
+            var code = userLang.substring(0, 2).toLowerCase();
+            var supported = ['en', 'es', 'fr'];
+            
+            if (supported.includes(code)) {
+                setTimeout(function() { translatePage(code); }, 1200); 
             }
         });
 
-        // 4. Animação de revelação dos cartões
+        // Resto dos scripts (Header, Modais, Scroll)
+        const header = document.getElementById("main-header");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 200) { header.classList.add("show"); } 
+            else { header.classList.remove("show"); }
+            revealOnScroll();
+        });
+
         function revealOnScroll() {
             document.querySelectorAll(".service-card").forEach(card => {
                 if (card.getBoundingClientRect().top < window.innerHeight - 100) {
@@ -175,13 +190,11 @@
             });
         }
 
-        // 5. Funções dos Modais
         function openContactModal() { document.getElementById("contact-modal").classList.add("active"); }
         function closeModal(id) { document.getElementById(id).classList.remove("active"); }
         function openSocialModal() { document.getElementById("social-modal").classList.add("active"); }
         function closeSocialModal() { document.getElementById("social-modal").classList.remove("active"); }
 
-        // 6. Scroll Suave
         document.getElementById("btn-explorar").addEventListener("click", function(e) {
             e.preventDefault();
             document.getElementById("servicos").scrollIntoView({ behavior: "smooth" });
@@ -191,10 +204,6 @@
             window.scrollTo({ top: 0, behavior: "smooth" });
         });
 
-        window.addEventListener("scroll", revealOnScroll);
-        window.addEventListener("load", revealOnScroll);
-
-        // Fechar modais ao clicar fora
         window.onclick = function(e) {
             if (e.target.classList.contains("contact-modal")) closeModal("contact-modal");
             if (e.target.classList.contains("social-modal")) closeSocialModal();
